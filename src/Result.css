@@ -1,0 +1,32 @@
+.result-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.result-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.pass {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
+
+.restart-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.restart-button:hover {
+  background-color: #0056b3;
+}
