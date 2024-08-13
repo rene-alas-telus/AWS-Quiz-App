@@ -8,6 +8,8 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [userName, setUserName] = useState('')
+  const [showAnswerFeedback, setShowAnswerFeedback] = useState(false)
+  const [answerFeedback, setAnswerFeedback] = useState({})
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -25,34 +27,19 @@ const Quiz = () => {
     const isMultipleChoice =
       questions[currentQuestionIndex].correctAnswer.includes(',')
 
-    if (isMultipleChoice) {
-      setSelectedAnswers((prev) => {
-        const updatedAnswers = {
-          ...prev,
-          [currentQuestionIndex]: {
-            ...prev[currentQuestionIndex],
-            [name]: checked
-          }
+    setSelectedAnswers((prev) => {
+      const updatedAnswers = {
+        ...prev,
+        [currentQuestionIndex]: {
+          ...prev[currentQuestionIndex],
+          [name]: checked
         }
-        console.log('Updated Selected Answers:', updatedAnswers)
-        return updatedAnswers
-      })
-    } else {
-      setSelectedAnswers((prev) => {
-        const updatedAnswers = {
-          ...prev,
-          [currentQuestionIndex]: {
-            [name]: checked
-          }
-        }
-        console.log('Updated Selected Answers:', updatedAnswers)
-        return updatedAnswers
-      })
-    }
+      }
+      return updatedAnswers
+    })
   }
 
   const handleSubmit = () => {
-    console.log('Final Selected Answers:', selectedAnswers)
     navigate('/result', { state: { questions, selectedAnswers, userName } })
   }
 
@@ -61,12 +48,67 @@ const Quiz = () => {
   }
 
   const goToNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+    const currentQuestion = questions[currentQuestionIndex]
+    const isMultipleChoice = currentQuestion.correctAnswer.includes(',')
+    const selectedAnswerCount = Object.keys(
+      selectedAnswers[currentQuestionIndex] || {}
+    ).length
+    const totalAnswersRequired = isMultipleChoice
+      ? currentQuestion.correctAnswer.split(',').length
+      : 1
+
+    if (isMultipleChoice && selectedAnswerCount < totalAnswersRequired) {
+      return
+    }
+
+    if (showAnswerFeedback) {
+      setTimeout(() => {
+        if (currentQuestionIndex < questions.length - 1) {
+          setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+          setAnswerFeedback({})
+        } else {
+          handleSubmit()
+        }
+      }, 2000)
     } else {
-      handleSubmit()
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+      } else {
+        handleSubmit()
+      }
     }
   }
+
+  const handleToggleChange = () => {
+    setShowAnswerFeedback((prev) => !prev)
+  }
+
+  useEffect(() => {
+    if (showAnswerFeedback && selectedAnswers[currentQuestionIndex]) {
+      const currentQuestion = questions[currentQuestionIndex]
+      const correctAnswers = new Set(currentQuestion.correctAnswer.split(','))
+      const selected = new Set(
+        Object.keys(selectedAnswers[currentQuestionIndex])
+      )
+      const feedback = {}
+
+      // Determine feedback
+      for (const answer of currentQuestion.possibleAnswers) {
+        const isCorrect = correctAnswers.has(answer[0])
+        const isSelected = selected.has(answer[0])
+        if (isCorrect && isSelected) {
+          feedback[answer[0]] = 'correct'
+        } else if (isCorrect) {
+          feedback[answer[0]] = 'correct'
+        } else if (isSelected) {
+          feedback[answer[0]] = 'incorrect'
+        }
+      }
+
+      setAnswerFeedback(feedback)
+      goToNextQuestion()
+    }
+  }, [showAnswerFeedback, selectedAnswers, currentQuestionIndex, questions])
 
   if (questions.length === 0) {
     return <div>Loading...</div>
@@ -80,6 +122,16 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
+      <div className="toggle-container">
+        <label>
+          <input
+            type="checkbox"
+            checked={showAnswerFeedback}
+            onChange={handleToggleChange}
+          />
+          Show Answer Feedback
+        </label>
+      </div>
       <div className="question-container">
         <h2>Question {currentQuestionIndex + 1}</h2>
         <p className="question-text">
@@ -93,7 +145,11 @@ const Quiz = () => {
             <div
               key={uuidv4()}
               className={`option ${
-                selectedAnswers[currentQuestionIndex]?.[answer[0]]
+                answerFeedback[answer[0]] === 'correct'
+                  ? 'correct'
+                  : answerFeedback[answer[0]] === 'incorrect'
+                  ? 'incorrect'
+                  : selectedAnswers[currentQuestionIndex]?.[answer[0]]
                   ? 'selected'
                   : ''
               }`}
@@ -114,21 +170,23 @@ const Quiz = () => {
           ))}
         </div>
       </div>
-      <div className="navigation-buttons">
-        {currentQuestionIndex > 0 && (
-          <button onClick={goToPreviousQuestion}>Previous</button>
-        )}
-        <button
-          onClick={goToNextQuestion}
-          disabled={
-            isMultipleChoice &&
-            Object.keys(selectedAnswers[currentQuestionIndex] || {}).length ===
-              0
-          }
-        >
-          {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}
-        </button>
-      </div>
+      {!showAnswerFeedback && (
+        <div className="navigation-buttons">
+          <button onClick={goToPreviousQuestion} disabled={showAnswerFeedback}>
+            Previous
+          </button>
+          <button
+            onClick={goToNextQuestion}
+            disabled={
+              isMultipleChoice &&
+              Object.keys(selectedAnswers[currentQuestionIndex] || {}).length <
+                (isMultipleChoice ? totalAnswersRequired : 1)
+            }
+          >
+            {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}
+          </button>
+        </div>
+      )}
     </div>
   )
 }

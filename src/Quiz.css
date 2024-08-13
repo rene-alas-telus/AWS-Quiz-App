@@ -2,6 +2,11 @@
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.toggle-container {
+  margin-bottom: 20px;
 }
 
 .question-container {
@@ -23,6 +28,17 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f9f9f9;
+  position: relative;
+}
+
+.option.correct {
+  border-color: green;
+  box-shadow: 0 0 10px green;
+}
+
+.option.incorrect {
+  border-color: red;
+  box-shadow: 0 0 10px red;
 }
 
 .option.selected {
@@ -56,4 +72,14 @@ button:disabled {
 
 button:hover:not(:disabled) {
   background-color: #0056b3;
+}
+
+.toggle-container label {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-container input[type='checkbox'] {
+  margin-right: 10px;
 }
