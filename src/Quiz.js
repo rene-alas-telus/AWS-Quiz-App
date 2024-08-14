@@ -10,6 +10,7 @@ const Quiz = () => {
   const [userName, setUserName] = useState('')
   const [showAnswerFeedback, setShowAnswerFeedback] = useState(false)
   const [answerFeedback, setAnswerFeedback] = useState({})
+  const [allAnswersSelected, setAllAnswersSelected] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -35,6 +36,20 @@ const Quiz = () => {
           [name]: checked
         }
       }
+
+      // Check if all required answers are selected
+      const currentQuestion = questions[currentQuestionIndex]
+      const totalAnswersRequired = isMultipleChoice
+        ? currentQuestion.correctAnswer.split(',').length
+        : 1
+
+      const selectedAnswerCount = Object.keys(
+        updatedAnswers[currentQuestionIndex] || {}
+      ).length
+
+      // Update the state to indicate if all required answers are selected
+      setAllAnswersSelected(selectedAnswerCount >= totalAnswersRequired)
+
       return updatedAnswers
     })
   }
@@ -48,19 +63,6 @@ const Quiz = () => {
   }
 
   const goToNextQuestion = () => {
-    const currentQuestion = questions[currentQuestionIndex]
-    const isMultipleChoice = currentQuestion.correctAnswer.includes(',')
-    const selectedAnswerCount = Object.keys(
-      selectedAnswers[currentQuestionIndex] || {}
-    ).length
-    const totalAnswersRequired = isMultipleChoice
-      ? currentQuestion.correctAnswer.split(',').length
-      : 1
-
-    if (isMultipleChoice && selectedAnswerCount < totalAnswersRequired) {
-      return
-    }
-
     if (showAnswerFeedback) {
       setTimeout(() => {
         if (currentQuestionIndex < questions.length - 1) {
@@ -88,7 +90,7 @@ const Quiz = () => {
       const currentQuestion = questions[currentQuestionIndex]
       const correctAnswers = new Set(currentQuestion.correctAnswer.split(','))
       const selected = new Set(
-        Object.keys(selectedAnswers[currentQuestionIndex])
+        Object.keys(selectedAnswers[currentQuestionIndex] || {})
       )
       const feedback = {}
 
@@ -105,10 +107,20 @@ const Quiz = () => {
         }
       }
 
-      setAnswerFeedback(feedback)
-      goToNextQuestion()
+      // Show feedback only if all required answers are selected
+      if (allAnswersSelected) {
+        setAnswerFeedback(feedback)
+        // Navigate after displaying feedback
+        goToNextQuestion()
+      }
     }
-  }, [showAnswerFeedback, selectedAnswers, currentQuestionIndex, questions])
+  }, [
+    showAnswerFeedback,
+    selectedAnswers,
+    currentQuestionIndex,
+    questions,
+    allAnswersSelected
+  ])
 
   if (questions.length === 0) {
     return <div>Loading...</div>
