@@ -1582,7 +1582,7 @@
     "number": "142"
   },
   {
-    "question": "Which AWS service meets this requirement?",
+    "question": "A company wants to manage its infrastructure as code in the AWS Cloud. Which AWS service meets this requirement?",
     "possibleAnswers": [
       "A. AWS CloudFormation",
       "B. AWS Elastic Beanstalk",
@@ -2563,7 +2563,7 @@
     "number": "230"
   },
   {
-    "question": "Which AWS service is used to temporarily provide federated security credentials to a    A. Amazon GuardDuty B. AWS Simple Token Service (AWS STS) C. AWS Secrets Manager D. AWS Certificate Manager    Explanation:?",
+    "question": "Which AWS service is used to temporarily provide federated security credentials to access AWS resources?",
     "possibleAnswers": [
       "A. Amazon GuardDuty",
       "B. AWS Simple Token Service (AWS STS)",
@@ -4532,7 +4532,7 @@
     "number": "407"
   },
   {
-    "question": "Which AWS service provides this functionality?",
+    "question": "A company wants to automatically set up and govern a multi-account AWS environment. Which AWS service provides this functionality?",
     "possibleAnswers": [
       "A. AWS 1AM Identity Center (AWS Single Sign-On)",
       "B. AWS Systems Manager",
