@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
-import './Quiz.css' // Import the CSS file
+import './Quiz.css'
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([])
@@ -11,11 +11,11 @@ const Quiz = () => {
   const [showAnswerFeedback, setShowAnswerFeedback] = useState(false)
   const [answerFeedback, setAnswerFeedback] = useState({})
   const [allAnswersSelected, setAllAnswersSelected] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false) // State for Dark Mode
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Fetch questions and randomize
-    fetch('/questions.json') // Adjusted path to fetch from public folder
+    fetch('/questions.json')
       .then((response) => response.json())
       .then((data) => {
         const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
@@ -37,7 +37,6 @@ const Quiz = () => {
         }
       }
 
-      // Check if all required answers are selected
       const currentQuestion = questions[currentQuestionIndex]
       const totalAnswersRequired = isMultipleChoice
         ? currentQuestion.correctAnswer.split(',').length
@@ -47,7 +46,6 @@ const Quiz = () => {
         updatedAnswers[currentQuestionIndex] || {}
       ).length
 
-      // Update the state to indicate if all required answers are selected
       setAllAnswersSelected(selectedAnswerCount >= totalAnswersRequired)
 
       return updatedAnswers
@@ -85,6 +83,11 @@ const Quiz = () => {
     setShowAnswerFeedback((prev) => !prev)
   }
 
+  const handleThemeToggle = () => {
+    setIsDarkMode((prev) => !prev)
+    document.body.classList.toggle('dark-mode') // Toggle the dark-mode class on the body
+  }
+
   useEffect(() => {
     if (showAnswerFeedback && selectedAnswers[currentQuestionIndex]) {
       const currentQuestion = questions[currentQuestionIndex]
@@ -94,7 +97,6 @@ const Quiz = () => {
       )
       const feedback = {}
 
-      // Determine feedback
       for (const answer of currentQuestion.possibleAnswers) {
         const isCorrect = correctAnswers.has(answer[0])
         const isSelected = selected.has(answer[0])
@@ -107,10 +109,8 @@ const Quiz = () => {
         }
       }
 
-      // Show feedback only if all required answers are selected
       if (allAnswersSelected) {
         setAnswerFeedback(feedback)
-        // Navigate after displaying feedback
         goToNextQuestion()
       }
     }
@@ -142,6 +142,14 @@ const Quiz = () => {
             onChange={handleToggleChange}
           />
           Show Answer Feedback
+        </label>
+        <label style={{ marginTop: '5px' }}>
+          <input
+            type="checkbox"
+            checked={isDarkMode}
+            onChange={handleThemeToggle}
+          />
+          Dark Mode
         </label>
       </div>
       <div className="question-container">
