@@ -2073,7 +2073,6 @@
   {
     "question": "A company needs to centralize its operational dat a. The company also needs to automate tasks across all of its Amazon EC2 instances. Which AWS service can the company use to meet these requirements?",
     "possibleAnswers": [
-      "A. The company also needs to automate tasks across all of its Amazon EC2 instances.",
       "A. AWS Trusted Advisor",
       "B. AWS Systems Manager",
       "C. AWS CodeDeploy",
