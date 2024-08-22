@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import Switch from 'react-switch'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import './Quiz.css'
 
 const Quiz = () => {
@@ -136,22 +138,49 @@ const Quiz = () => {
     <div className="quiz-container">
       <div className="toggle-container">
         <label>
-          <input
-            type="checkbox"
-            checked={showAnswerFeedback}
-            onChange={handleToggleChange}
-          />
-          Show Answer Feedback
+          Show Visual Feedback:
+          <div style={{ marginLeft: '5px' }}></div>
+          <Switch onChange={handleToggleChange} checked={showAnswerFeedback} />
         </label>
-        <label style={{ marginTop: '5px' }}>
-          <input
-            type="checkbox"
-            checked={isDarkMode}
+        <div style={{ marginLeft: '50px' }}></div>
+        <label>
+          Theme Changer:
+          <div style={{ marginLeft: '5px' }}></div>
+          <Switch
             onChange={handleThemeToggle}
+            checked={isDarkMode}
+            offColor="#222"
+            onColor="#000080"
+            checkedIcon={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  height: '100%',
+                  paddingRight: '5px'
+                }}
+              >
+                <FaSun color="yellow" />
+              </div>
+            }
+            uncheckedIcon={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  height: '100%',
+                  paddingRight: '5px'
+                }}
+              >
+                <FaMoon color="white" />
+              </div>
+            }
           />
-          Dark Mode
         </label>
       </div>
+
       <div className="question-container">
         <h2>Question {currentQuestionIndex + 1}</h2>
         <p className="question-text">
