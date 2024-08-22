@@ -670,7 +670,6 @@
   {
     "question": "A company has an online shopping website and wants to store customers' credit card dat a. The company must meet Payment Card Industry (PCI) standards. Which service can the company use to access AWS compliance documentation?",
     "possibleAnswers": [
-      "A. The company must meet Payment Card Industry (PCI) standards.",
       "A. Amazon Cloud Directory",
       "B. AWS Artifact",
       "C. AWS Trusted Advisor",
