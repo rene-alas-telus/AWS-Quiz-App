@@ -523,14 +523,14 @@
     "number": "47"
   },
   {
-    "question": "A retail company is building a new mobile app. The company is evaluating whether to build the app at an on-premises data center or in the AWS Cloud. responsibility model?",
+    "question": "Which of the following is the customer responsible for updating and patching, according to the AWS shared responsibility model?",
     "possibleAnswers": [
       "A. Amazon FSx for Windows File Server",
       "B. Amazon Workspaces virtual Windows desktop",
       "C. AWS Directory Service for Microsoft Active Directory",
       "D. Amazon RDS for Microsoft SQL Server"
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "number": "48"
   },
   {
