@@ -2682,7 +2682,7 @@
     "number": "241"
   },
   {
-    "question": "Which AWS solution should the company use to meet this requirement?",
+    "question": "A company wants to limit its employees' AWS access to a portfolio of predefined AWS resources. Which AWS solution should the company use to meet this requirement?",
     "possibleAnswers": [
       "A. AWS Config",
       "B. AWS software development kits (SDKs)",
@@ -2838,7 +2838,7 @@
     "number": "255"
   },
   {
-    "question": "How should the company deploy the application to meet these requirements?",
+    "question": "A company wants to deploy its critical application on AWS and maintain high availability. How should the company deploy the application to meet these requirements?",
     "possibleAnswers": [
       "A. Ina single Availability Zone",
       "B. On AWS Direct Connect",
