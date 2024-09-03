@@ -468,7 +468,7 @@
     "number": "42"
   },
   {
-    "question": "Which best practice for cost governance does this example show?",
+    "question": "A company has refined its workload to use specific AWS services to improve efficiency and reduce cost. Which best practice for cost governance does this example show?",
     "possibleAnswers": [
       "A. Resource controls",
       "B. Cost allocation",
@@ -1248,7 +1248,7 @@
     "number": "112"
   },
   {
-    "question": "Using Amazon Elastic Container Service (Amazon ECS) to break down a monolithic architecture into microservices is an example of:  A. a loosely coupled architecture. B. a tightly coupled architecture. C. a stateless architecture. D. a stateful architecture.    Explanation:?",
+    "question": "Using Amazon Elastic Container Service (Amazon ECS) to break down a monolithic architecture into microservices is an example of: ?",
     "possibleAnswers": [
       "A. a loosely coupled architecture.",
       "B. a tightly coupled architecture.",
