@@ -3587,7 +3587,8 @@
     "possibleAnswers": [
       "A. S3 Storage Lens",
       "B. S3 Cross-Region Replication (CRR)",
-      "C. S3 Versioning"
+      "C. S3 Versioning",
+      "D. S3 Access Points"
     ],
     "correctAnswer": "D",
     "number": "323"
