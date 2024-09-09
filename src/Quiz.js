@@ -33,10 +33,15 @@ const Quiz = () => {
     setSelectedAnswers((prev) => {
       const updatedAnswers = {
         ...prev,
-        [currentQuestionIndex]: {
-          ...prev[currentQuestionIndex],
-          [name]: checked
-        }
+        [currentQuestionIndex]: isMultipleChoice
+          ? {
+              ...prev[currentQuestionIndex],
+              [name]: checked
+            }
+          : {
+              // For single-choice questions, only one answer can be selected at a time.
+              [name]: checked
+            }
       }
 
       const currentQuestion = questions[currentQuestionIndex]
