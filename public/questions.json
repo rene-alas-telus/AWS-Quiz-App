@@ -984,7 +984,7 @@
     "number": "88"
   },
   {
-    "question": "Which AWS features will meet these requirements?",
+    "question": "A company stores data in an Amazon S3 bucket. The company must control who has permission to read, write, or delete objects that the company stores in the S3 bucket. Which AWS features will meet these requirements?",
     "possibleAnswers": [
       "A. Security groups",
       "B. Network ACLs",
