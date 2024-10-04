@@ -30,3 +30,68 @@
 .restart-button:hover {
   background-color: #0056b3;
 }
+
+.wrong-answer-section {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light mode background */
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centering the answers */
+}
+
+.answer-item {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 1rem; /* Matching the font size */
+}
+
+.correct-answer {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.wrong-answer {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.toggle-container label {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .wrong-answer-section {
+  background-color: #444444; /* Dark mode background */
+  border-color: #555555; /* Dark mode border color */
+}
+
+body.dark-mode .correct-answer {
+  background-color: #004400; /* Dark mode correct background */
+  border-color: #00ff00; /* Dark mode correct border */
+  color: #00ff00; /* Dark mode correct text color */
+}
+
+body.dark-mode .wrong-answer {
+  background-color: #550000; /* Dark mode wrong background */
+  border-color: #ff0000; /* Dark mode wrong border */
+  color: #ff6666; /* Dark mode wrong text color */
+}
+
+body.dark-mode .answer-item {
+  color: #ffffff; /* Default text color in dark mode */
+}

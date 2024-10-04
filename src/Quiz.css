@@ -13,6 +13,11 @@ html {
   padding: 20px;
 }
 
+.timerLabel {
+  font-size: medium;
+  font-weight: bold;
+}
+
 .toggle-container {
   display: flex; /* Align items in a row */
   justify-content: space-between; /* Space items out evenly */

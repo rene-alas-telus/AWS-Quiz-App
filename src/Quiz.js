@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Switch from 'react-switch'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { FaMoon, FaSun, FaClock } from 'react-icons/fa'
 import './Quiz.css'
 
 const Quiz = () => {
@@ -13,9 +13,11 @@ const Quiz = () => {
   const [showAnswerFeedback, setShowAnswerFeedback] = useState(false)
   const [answerFeedback, setAnswerFeedback] = useState({})
   const [allAnswersSelected, setAllAnswersSelected] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false) // State for Dark Mode
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [timer, setTimer] = useState(100 * 60) // 100 minutes in seconds
   const navigate = useNavigate()
 
+  // Fetch questions
   useEffect(() => {
     fetch('/questions.json')
       .then((response) => response.json())
@@ -24,6 +26,26 @@ const Quiz = () => {
         setQuestions(shuffled)
       })
   }, [])
+
+  // Handle the timer countdown
+  useEffect(() => {
+    if (timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1)
+      }, 1000)
+      return () => clearInterval(interval)
+    } else {
+      // Time's up, auto-submit the quiz
+      handleSubmit()
+    }
+  }, [timer])
+
+  // Format the timer as MM:SS
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60)
+    const seconds = time % 60
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  }
 
   const handleAnswerChange = (e) => {
     const { name, checked } = e.target
@@ -39,7 +61,6 @@ const Quiz = () => {
               [name]: checked
             }
           : {
-              // For single-choice questions, only one answer can be selected at a time.
               [name]: checked
             }
       }
@@ -60,7 +81,20 @@ const Quiz = () => {
   }
 
   const handleSubmit = () => {
-    navigate('/result', { state: { questions, selectedAnswers, userName } })
+    // Mark unanswered questions as incorrect
+    const autoGradedAnswers = { ...selectedAnswers }
+    questions.forEach((question, index) => {
+      if (!autoGradedAnswers[index]) {
+        autoGradedAnswers[index] = {}
+        question.correctAnswer.split(',').forEach((answer) => {
+          autoGradedAnswers[index][answer] = false // Mark as incorrect
+        })
+      }
+    })
+
+    navigate('/result', {
+      state: { questions, selectedAnswers: autoGradedAnswers, userName }
+    })
   }
 
   const goToPreviousQuestion = () => {
@@ -92,7 +126,7 @@ const Quiz = () => {
 
   const handleThemeToggle = () => {
     setIsDarkMode((prev) => !prev)
-    document.body.classList.toggle('dark-mode') // Toggle the dark-mode class on the body
+    document.body.classList.toggle('dark-mode')
   }
 
   useEffect(() => {
@@ -141,6 +175,18 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
+      {/* Timer Display */}
+      <div className="timer">
+        <p>
+          <FaClock
+            color={isDarkMode ? 'white' : 'black'}
+            style={{ marginRight: '5px' }}
+          />
+          <label className="timerLabel">Time Remaining:</label>{' '}
+          {formatTime(timer)}
+        </p>
+      </div>
+
       <div className="toggle-container">
         <label>
           Show Visual Feedback:
@@ -234,10 +280,10 @@ const Quiz = () => {
             disabled={
               isMultipleChoice &&
               Object.keys(selectedAnswers[currentQuestionIndex] || {}).length <
-                (isMultipleChoice ? totalAnswersRequired : 1)
+                totalAnswersRequired
             }
           >
-            {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}
+            Next
           </button>
         </div>
       )}
