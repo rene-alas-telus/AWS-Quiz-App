@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Switch from 'react-switch'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import { FaMoon, FaSun, FaClock } from 'react-icons/fa'
 import './Quiz.css'
@@ -15,17 +15,37 @@ const Quiz = () => {
   const [allAnswersSelected, setAllAnswersSelected] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [timer, setTimer] = useState(100 * 60) // 100 minutes in seconds
+  const [examTitle, setExamTitle] = useState('')
   const navigate = useNavigate()
+  const location = useLocation()
 
-  // Fetch questions
+  // Fetch questions based on exam type and set dark mode
   useEffect(() => {
-    fetch('/questions.json')
+    const examType = location.state?.examType || 'practitioner'
+    const jsonFile = examType === 'practitioner' 
+      ? '/practitionerQuestions.json' 
+      : '/developerQuestions.json'
+    
+    // Set the exam title
+    setExamTitle(examType === 'practitioner' 
+      ? 'Cloud Practitioner Practice Test' 
+      : 'Developer Associate Practice Test')
+    
+    // Set dark mode from location state if available
+    if (location.state?.isDarkMode) {
+      setIsDarkMode(location.state.isDarkMode)
+      if (location.state.isDarkMode) {
+        document.body.classList.add('dark-mode')
+      }
+    }
+    
+    fetch(jsonFile)
       .then((response) => response.json())
       .then((data) => {
         const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
         setQuestions(shuffled)
       })
-  }, [])
+  }, [location.state])
 
   // Handle the timer countdown
   useEffect(() => {
@@ -93,7 +113,13 @@ const Quiz = () => {
     })
 
     navigate('/result', {
-      state: { questions, selectedAnswers: autoGradedAnswers, userName }
+      state: { 
+        questions, 
+        selectedAnswers: autoGradedAnswers, 
+        userName,
+        examTitle,
+        isDarkMode
+      }
     })
   }
 
@@ -175,6 +201,9 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
+      {/* Exam Title */}
+      <h1 className="exam-title">{examTitle}</h1>
+      
       {/* Timer Display */}
       <div className="timer">
         <p>

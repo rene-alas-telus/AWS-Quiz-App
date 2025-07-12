@@ -13,6 +13,20 @@ html {
   padding: 20px;
 }
 
+.exam-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 24px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+body.dark-mode .exam-title {
+  color: #1a73e8;
+  border-bottom-color: #1a73e8;
+}
+
 .timerLabel {
   font-size: medium;
   font-weight: bold;

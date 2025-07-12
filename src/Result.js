@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Switch from 'react-switch'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import './Result.css' // Import the CSS file
 
 const Result = () => {
@@ -8,9 +9,24 @@ const Result = () => {
   const navigate = useNavigate()
 
   // Destructure state from location
-  const { questions, selectedAnswers, userName } = location.state || {}
+  const { questions, selectedAnswers, userName, examTitle, isDarkMode: initialDarkMode } = location.state || {}
 
   const [showIncorrectAnswers, setShowIncorrectAnswers] = useState(false) // Toggle for incorrect answers
+  const [isDarkMode, setIsDarkMode] = useState(initialDarkMode || false)
+
+  // Apply dark mode class to body if needed
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+    }
+  }, [isDarkMode])
+
+  const handleThemeToggle = () => {
+    setIsDarkMode((prev) => !prev)
+    document.body.classList.toggle('dark-mode')
+  }
 
   if (!questions || !selectedAnswers) {
     return <div>Error: No data available.</div>
@@ -45,7 +61,7 @@ const Result = () => {
   const pass = percentage >= 70
 
   const handleRestart = () => {
-    navigate('/quiz')
+    navigate('/')
   }
 
   // Function to render and count the wrong answers
@@ -101,6 +117,48 @@ const Result = () => {
 
   return (
     <div className="result-container">
+      {examTitle && <h2 className="exam-title">{examTitle}</h2>}
+      
+      <div className="toggle-container">
+        <div></div> {/* Empty div for spacing */}
+        <label>
+          Theme Changer:
+          <div style={{ marginLeft: '5px' }}></div>
+          <Switch
+            onChange={handleThemeToggle}
+            checked={isDarkMode}
+            offColor="#222"
+            onColor="#000080"
+            checkedIcon={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  height: '100%',
+                  paddingRight: '5px'
+                }}
+              >
+                <FaSun color="yellow" />
+              </div>
+            }
+            uncheckedIcon={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  height: '100%',
+                  paddingRight: '5px'
+                }}
+              >
+                <FaMoon color="white" />
+              </div>
+            }
+          />
+        </label>
+      </div>
+      
       <h1>{userName ? `${userName}'s Result` : 'Your Result'}</h1>
       <p className={`result-text ${pass ? 'pass' : 'fail'}`}>
         {pass ? 'Pass' : 'Fail'} - {percentage.toFixed(2)}%
