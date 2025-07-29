@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Switch from 'react-switch'
 import { FaMoon, FaSun } from 'react-icons/fa'
+import { useTheme } from './contexts/ThemeContext'
 import './Quiz.css'
 
 const ExamSelection = () => {
   const [selectedExam, setSelectedExam] = useState('')
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { isDarkMode, toggleTheme } = useTheme()
   const navigate = useNavigate()
 
   const handleExamSelection = (exam) => {
@@ -15,13 +16,8 @@ const ExamSelection = () => {
 
   const handleStartQuiz = () => {
     if (selectedExam) {
-      navigate('/quiz', { state: { examType: selectedExam, isDarkMode } })
+      navigate('/quiz', { state: { examType: selectedExam } })
     }
-  }
-
-  const handleThemeToggle = () => {
-    setIsDarkMode((prev) => !prev)
-    document.body.classList.toggle('dark-mode')
   }
 
   return (
@@ -34,7 +30,7 @@ const ExamSelection = () => {
           Theme Changer:
           <div style={{ marginLeft: '5px' }}></div>
           <Switch
-            onChange={handleThemeToggle}
+            onChange={toggleTheme}
             checked={isDarkMode}
             offColor="#222"
             onColor="#000080"
@@ -77,11 +73,12 @@ const ExamSelection = () => {
         >
           <input 
             type="radio" 
+            id="practitioner-exam"
             name="examType" 
             checked={selectedExam === 'practitioner'} 
             onChange={() => handleExamSelection('practitioner')} 
           />
-          <label>Cloud Practitioner CLF-C02</label>
+          <label htmlFor="practitioner-exam">Cloud Practitioner CLF-C02</label>
         </div>
         
         <div 
@@ -90,11 +87,12 @@ const ExamSelection = () => {
         >
           <input 
             type="radio" 
+            id="developer-exam"
             name="examType" 
             checked={selectedExam === 'developer'} 
             onChange={() => handleExamSelection('developer')} 
           />
-          <label>Developer Associate DVA-C02</label>
+          <label htmlFor="developer-exam">Developer Associate DVA-C02</label>
         </div>
       </div>
       

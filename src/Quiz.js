@@ -3,6 +3,8 @@ import Switch from 'react-switch'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import { FaMoon, FaSun, FaClock } from 'react-icons/fa'
+import { useAuth } from './contexts/AuthContext'
+import { useTheme } from './contexts/ThemeContext'
 import './Quiz.css'
 
 const Quiz = () => {
@@ -13,11 +15,12 @@ const Quiz = () => {
   const [showAnswerFeedback, setShowAnswerFeedback] = useState(false)
   const [answerFeedback, setAnswerFeedback] = useState({})
   const [allAnswersSelected, setAllAnswersSelected] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const [timer, setTimer] = useState(100 * 60) // 100 minutes in seconds
+  const [timer, setTimer] = useState(5 * 60) // 5 minutes in seconds for testing
   const [examTitle, setExamTitle] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
+  const { currentUser } = useAuth()
+  const { isDarkMode, toggleTheme } = useTheme()
 
   // Fetch questions based on exam type and set dark mode
   useEffect(() => {
@@ -31,18 +34,14 @@ const Quiz = () => {
       ? 'Cloud Practitioner Practice Test' 
       : 'Developer Associate Practice Test')
     
-    // Set dark mode from location state if available
-    if (location.state?.isDarkMode) {
-      setIsDarkMode(location.state.isDarkMode)
-      if (location.state.isDarkMode) {
-        document.body.classList.add('dark-mode')
-      }
-    }
+    // No need to set dark mode from location state anymore
+    // The ThemeContext handles this now
     
     fetch(jsonFile)
       .then((response) => response.json())
       .then((data) => {
-        const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
+        // Reduced number of questions for testing (5 instead of 65)
+        const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 5)
         setQuestions(shuffled)
       })
   }, [location.state])
@@ -112,13 +111,20 @@ const Quiz = () => {
       }
     })
 
+    // Log the data being passed to the result page
+    console.log('Submitting quiz with data:', {
+      questions, 
+      selectedAnswers: autoGradedAnswers, 
+      userName: currentUser?.displayName || userName,
+      examTitle
+    })
+
     navigate('/result', {
       state: { 
         questions, 
         selectedAnswers: autoGradedAnswers, 
-        userName,
-        examTitle,
-        isDarkMode
+        userName: currentUser?.displayName || userName,
+        examTitle
       }
     })
   }
@@ -148,11 +154,6 @@ const Quiz = () => {
 
   const handleToggleChange = () => {
     setShowAnswerFeedback((prev) => !prev)
-  }
-
-  const handleThemeToggle = () => {
-    setIsDarkMode((prev) => !prev)
-    document.body.classList.toggle('dark-mode')
   }
 
   useEffect(() => {
@@ -227,7 +228,7 @@ const Quiz = () => {
           Theme Changer:
           <div style={{ marginLeft: '5px' }}></div>
           <Switch
-            onChange={handleThemeToggle}
+            onChange={toggleTheme}
             checked={isDarkMode}
             offColor="#222"
             onColor="#000080"
@@ -285,6 +286,7 @@ const Quiz = () => {
             >
               <input
                 type={isMultipleChoice ? 'checkbox' : 'radio'}
+                id={`answer-${answer[0]}-${currentQuestionIndex}`}
                 name={answer[0]}
                 checked={!!selectedAnswers[currentQuestionIndex]?.[answer[0]]}
                 onChange={handleAnswerChange}
@@ -294,7 +296,7 @@ const Quiz = () => {
                     : !!selectedAnswers[currentQuestionIndex]?.[answer[0]]
                 }
               />
-              <label>{answer}</label>
+              <label htmlFor={`answer-${answer[0]}-${currentQuestionIndex}`}>{answer}</label>
             </div>
           ))}
         </div>

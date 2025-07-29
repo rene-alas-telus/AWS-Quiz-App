@@ -1,6 +1,16 @@
 .result-container {
   text-align: center;
   padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+body.dark-mode .result-container {
+  background-color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .exam-title {
@@ -39,17 +49,29 @@ body.dark-mode .exam-title {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 5px;
 }
 
 .restart-button:hover {
   background-color: #0056b3;
 }
 
+body.dark-mode .restart-button {
+  background-color: #1a73e8;
+}
+
+body.dark-mode .restart-button:hover {
+  background-color: #0a49b8;
+}
+
 .wrong-answer-section {
   margin-top: 20px;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
   background-color: #f9f9f9; /* Light mode background */
+  border-radius: 8px;
+  text-align: left;
 }
 
 .answers {
@@ -81,6 +103,7 @@ body.dark-mode .exam-title {
   align-items: center;
   justify-content: center;
   margin: 20px;
+  flex-wrap: wrap;
 }
 
 .toggle-container label {

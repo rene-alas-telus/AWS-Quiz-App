@@ -2,37 +2,30 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Switch from 'react-switch'
 import { FaMoon, FaSun } from 'react-icons/fa'
-import './Result.css' // Import the CSS file
+import { useAuth } from './contexts/AuthContext'
+import { useTheme } from './contexts/ThemeContext'
+import { saveQuizAttempt, getLatestQuizAttempts } from './services/quizService'
+import QuizHistory from './components/QuizHistory'
+import './Result.css'
 
 const Result = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { currentUser } = useAuth()
 
   // Destructure state from location
-  const { questions, selectedAnswers, userName, examTitle, isDarkMode: initialDarkMode } = location.state || {}
+  const { questions, selectedAnswers, userName, examTitle } = location.state || {}
 
   const [showIncorrectAnswers, setShowIncorrectAnswers] = useState(false) // Toggle for incorrect answers
-  const [isDarkMode, setIsDarkMode] = useState(initialDarkMode || false)
+  const { isDarkMode, toggleTheme } = useTheme()
+  const [quizAttempts, setQuizAttempts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [attemptSaved, setAttemptSaved] = useState(false)
 
-  // Apply dark mode class to body if needed
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode')
-    } else {
-      document.body.classList.remove('dark-mode')
-    }
-  }, [isDarkMode])
-
-  const handleThemeToggle = () => {
-    setIsDarkMode((prev) => !prev)
-    document.body.classList.toggle('dark-mode')
-  }
-
-  if (!questions || !selectedAnswers) {
-    return <div>Error: No data available.</div>
-  }
-
+  // Calculate results
   const calculateResults = () => {
+    if (!questions || !selectedAnswers) return { correctCount: 0, percentage: 0 }
+    
     let correctCount = 0
 
     questions.forEach((question, index) => {
@@ -60,8 +53,57 @@ const Result = () => {
   const { correctCount, percentage } = calculateResults()
   const pass = percentage >= 70
 
+  // Save quiz attempt and fetch history - combined into a single useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!currentUser) return
+      
+      try {
+        // Only save the quiz attempt if it hasn't been saved yet and we have questions
+        if (!attemptSaved && questions) {
+          console.log('Saving quiz attempt for user:', currentUser.uid)
+          console.log('Quiz data:', {
+            examTitle,
+            percentage,
+            correctCount,
+            questions: questions.length // Just log the length to avoid console clutter
+          })
+          
+          // Save the current quiz attempt with a unique ID
+          const result = await saveQuizAttempt(currentUser.uid, {
+            examTitle,
+            percentage,
+            correctCount,
+            questions,
+            attemptId: `${currentUser.uid}_${Date.now()}`
+          })
+          console.log('Save result:', result)
+          setAttemptSaved(true)
+        }
+        
+        // Always fetch quiz history
+        console.log('Fetching quiz history for user:', currentUser.uid)
+        const attempts = await getLatestQuizAttempts(currentUser.uid)
+        console.log('Fetched quiz attempts:', attempts)
+        setQuizAttempts(attempts)
+      } catch (error) {
+        console.error('Error saving/fetching quiz data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [currentUser, questions, examTitle, percentage, correctCount, attemptSaved])
+
+  // No need for a separate handleThemeToggle function, we'll use toggleTheme from context
+
   const handleRestart = () => {
     navigate('/')
+  }
+
+  if (!questions || !selectedAnswers) {
+    return <div>Error: No data available.</div>
   }
 
   // Function to render and count the wrong answers
@@ -125,7 +167,7 @@ const Result = () => {
           Theme Changer:
           <div style={{ marginLeft: '5px' }}></div>
           <Switch
-            onChange={handleThemeToggle}
+            onChange={toggleTheme}
             checked={isDarkMode}
             offColor="#222"
             onColor="#000080"
@@ -159,7 +201,7 @@ const Result = () => {
         </label>
       </div>
       
-      <h1>{userName ? `${userName}'s Result` : 'Your Result'}</h1>
+      <h1>{currentUser?.displayName ? `${currentUser.displayName}'s Result` : 'Your Result'}</h1>
       <p className={`result-text ${pass ? 'pass' : 'fail'}`}>
         {pass ? 'Pass' : 'Fail'} - {percentage.toFixed(2)}%
       </p>
@@ -190,6 +232,9 @@ const Result = () => {
           {incorrectCount > 0 ? wrongAnswers : <p>All answers were correct!</p>}
         </div>
       )}
+      
+      {/* Quiz History Section */}
+      {!loading && <QuizHistory attempts={quizAttempts} />}
     </div>
   )
 }

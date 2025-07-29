@@ -5,12 +5,26 @@ html {
   padding: 0;
   height: 100%;
   font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+body.dark-mode,
+html.dark-mode {
+  background-color: #222;
 }
 
 .quiz-container {
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .quiz-container {
+  background-color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .exam-title {
@@ -37,6 +51,11 @@ body.dark-mode .exam-title {
   justify-content: space-between; /* Space items out evenly */
   align-items: center; /* Align items vertically in the center */
   margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.toggle-container > * {
+  margin: 5px 0;
 }
 
 .question-container {
@@ -53,12 +72,23 @@ body.dark-mode .exam-title {
 }
 
 .option {
-  margin: 5px 0;
-  padding: 5px;
+  margin: 10px 0;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f9f9f9;
   position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  align-items: center;
+}
+
+.option:hover {
+  border-color: #007bff;
+  background-color: #f0f7ff;
 }
 
 .option.correct {
@@ -77,12 +107,30 @@ body.dark-mode .exam-title {
 
 input[type='radio'],
 input[type='checkbox'] {
-  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  justify-self: start;
+}
+
+.option label {
+  display: block;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding-right: 10px;
 }
 
 .navigation-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.navigation-buttons button {
+  min-width: 100px;
 }
 
 button {
@@ -93,6 +141,8 @@ button {
   cursor: pointer;
   background-color: #007bff;
   color: #fff;
+  transition: background-color 0.3s;
+  margin: 5px;
 }
 
 button:disabled {
