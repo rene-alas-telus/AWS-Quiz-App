@@ -15,7 +15,7 @@ const Quiz = () => {
   const [showAnswerFeedback, setShowAnswerFeedback] = useState(false)
   const [answerFeedback, setAnswerFeedback] = useState({})
   const [allAnswersSelected, setAllAnswersSelected] = useState(false)
-  const [timer, setTimer] = useState(5 * 60) // 5 minutes in seconds for testing
+  const [timer, setTimer] = useState(90 * 60) // 90 minutes in seconds
   const [examTitle, setExamTitle] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
@@ -40,8 +40,8 @@ const Quiz = () => {
     fetch(jsonFile)
       .then((response) => response.json())
       .then((data) => {
-        // Reduced number of questions for testing (5 instead of 65)
-        const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 5)
+        // Reduced number of questions for testing (65 )
+        const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
         setQuestions(shuffled)
       })
   }, [location.state])
