@@ -3,8 +3,7 @@
     "question": "A company is implementing an application on Amazon EC2 instances. The application needs to process incoming transactions. When the application detects a transaction that is not valid, the application must send a chat message to the company's support team. To send the message, the application needs to retrieve the access token to authenticate by using the chat API. A developer needs to implement a solution to store the access token. The access token must be encrypted at rest and in transit. The access token must also be accessible from other AWS accounts. Which solution will meet these requirements with the LEAST management overhead?",
     "possibleAnswers": [
       "A. Use an AWS Systems Manager Parameter Store SecureString parameter that uses an AWS Key Management Service (AWS KMS) AWS managed key to store the access token. Add a resource-based policy to the parameter to allow access from other accounts. Update the IAM role of the EC2 instances with permissions to access Parameter Store. Retrieve the token from Parameter Store with the decrypt flag enabled. Use the decrypted access token to send the message to the chat.",
-      "B. Encrypt the access token by using an AWS Key Management Service (AWS KMS) customer managed key. Store the access token in an Amazon DynamoDB table. Update the IAM role of the EC2instances with permissions to access DynamoDB and AWS KMS. Retrieve the token from DynamoDB.",
-      "B. Decrypt the token by using AWS KMS on the EC2 instances. Use the decrypted access token to send the message to the chat.",
+      "B. Encrypt the access token by using an AWS Key Management Service (AWS KMS) customer managed key. Store the access token in an Amazon DynamoDB table. Update the IAM role of the EC2instances with permissions to access DynamoDB and AWS KMS. Retrieve the token from DynamoDB. Decrypt the token by using AWS KMS on the EC2 instances. Use the decrypted access token to send the message to the chat.",
       "C. Use AWS Secrets Manager with an AWS Key Management Service (AWS KMS) customer managed key to store the access token. Add a resource-based policy to the secret to allow access from otheraccounts. Update the IAM role of the EC2 instances with permissions to access Secrets Manager.Retrieve the token from Secrets Manager. Use the decrypted access token to send the message to the chat.",
       "D. Encrypt the access token by using an AWS Key Management Service (AWS KMS) AWS managed key. Store the access token in an Amazon S3 bucket. Add a bucket policy to the S3 bucket to allowaccess from other accounts. Update the IAM role of the EC2 instances with permissions to accessAmazon S3 and AWS KMS. Retrieve the token from the S3 bucket. Decrypt the token by using AWS KMS on the EC2 instances. Use the decrypted access token to send the message to the chat."
     ],
@@ -50,7 +49,6 @@
       "A. The Lambda function's concurrency limit has been exceeded.",
       "B. DynamoDB table requires a global secondary index (GSI) to support writes.",
       "C. The Lambda function does not have IAM permissions to write to DynamoDB.",
-      "B. The Lambda function is not configured with the correct VPC settings.",
       "D. The DynamoDB table is not running in the same Availability Zone as the Lambda function."
     ],
     "correctAnswer": "C",
@@ -129,8 +127,7 @@
       "A. Use Amazon Cognito user pools to manage user accounts. Create an Amazon Cognito user pool authorizer in API Gateway to control access to the API. Use the Lambda function to store the photos and details in the DynamoDB table. Retrieve previously uploaded photos directly from the DynamoDB table.",
       "B. Use Amazon Cognito user pools to manage user accounts. Create an Amazon Cognito user pool authorizer in API Gateway to control access to the API. Use the Lambda function to store the photos in Amazon S3. Store the object's S3 key as part of the photo details in the DynamoDB table. Retrieve previously uploaded photos by querying DynamoDB for the S3 key.",
       "C. Create an IAM user for each user of the application during the sign-up process. Use IAM authentication to access the API Gateway API. Use the Lambda function to store the photos in Amazon S3. Store the object's S3 key as part of the photo details in the DynamoDB table. Retrieve previously uploaded photos by querying DynamoDB for the S3 key.",
-      "D. Create a users table in DynamoDB.",
-      "B. Use the table to manage user accounts. Create a Lambda authorizer that validates user credentials against the users table. Integrate the Lambda authorizer with API Gateway to control access to the API. Use the Lambda function to store the photos in Amazon S3. Store the object's S3 key as part of the photo details in the DynamoDB table. Retrieve previously uploaded photos by querying DynamoDB for the S3 key."
+      "D. Create a users table in DynamoDB.Use the table to manage user accounts. Create a Lambda authorizer that validates user credentials against the users table. Integrate the Lambda authorizer with API Gateway to control access to the API. Use the Lambda function to store the photos in Amazon S3. Store the object's S3 key as part of the photo details in the DynamoDB table. Retrieve previously uploaded photos by querying DynamoDB for the S3 key."
     ],
     "correctAnswer": "B",
     "number": "12"
@@ -1485,8 +1482,7 @@
     "question": "A company has an application that stores data in Amazon RDS instances. The application periodicallyexperiences surges of high traffic that cause performance problems.During periods of peak traffic, a developer notices a reduction in query speed in all database queries.The team's technical lead determines that a multi-threaded and scalable caching solution should beused to offload the heavy read traffic. The solution needs to improve performance.Which solution will meet these requirements with the LEAST complexity?",
     "possibleAnswers": [
       "A. Use Amazon ElastiCache for Memcached to offload read requests from the main database.",
-      "B. Replicate the data to Amazon DynamoDB.",
-      "B. Set up a DynamoDB Accelerator (DAX) cluster.",
+      "B. Replicate the data to Amazon DynamoDB. Set up a DynamoDB Accelerator (DAX) cluster.",
       "C. Configure the Amazon RDS instances to use Multi-AZ deployment with one standby instance.Offload read requests from the main database to the standbyinstance.",
       "D. Use Amazon ElastiCache for Redis to offload read requests from the main database.",
       "E. Use Amazon S3 to store the data and enable S3 Select to retrieve only the required data."
@@ -1588,9 +1584,9 @@
     "possibleAnswers": [
       "A. Set the Deployment Preference Type to Canary10Percent10Minutes. Set the AutoPublishAliasproperty to the Lambda alias.",
       "B. Set the Deployment Preference Type to LinearlOPercentEvery10Minutes. Set AutoPubIishAIiasproperty to the Lambda alias.",
-      "E. Create a separate AWS CloudFormation stack for each testing and staging environment. Use theAWS CloudFormation StackSets feature to deploy updates to the environments.",
       "C. Set the Deployment Preference Type to CanaryIOPercentIOMinutes. Set the PreTraffic andPostTraffic properties to the Lambda alias.",
-      "D. Set the Deployment Preference Type to LinearlOPercentEveryIOMinutes. Set PreTraffic and PostTraffic properties to the Lambda alias."
+      "D. Set the Deployment Preference Type to LinearlOPercentEveryIOMinutes. Set PreTraffic and PostTraffic properties to the Lambda alias.",
+      "E. Create a separate AWS CloudFormation stack for each testing and staging environment. Use theAWS CloudFormation StackSets feature to deploy updates to the environments."
     ],
     "correctAnswer": "A",
     "number": "143"
@@ -2161,8 +2157,7 @@
     "possibleAnswers": [
       "A. Create API Gateway resources and set the integration type value to MOCK Configure the method integration request and integration response to associate a response with an HTTP status code Create an API Gateway stage and deploy the API.",
       "B. Create an AWS Lambda function that returns mocked responses and various HTTP status codes.",
-      "C. Create API Gateway resources and set the integration type value to AWS_PROXY Deploy the API.",
-      "C. Create an EC2 application that returns mocked HTTP responses Create API Gateway resources and set the integration type value to AWS Create an API Gateway stage and deploy the API.",
+      "C. Create API Gateway resources and set the integration type value to AWS_PROXY Deploy the API. Create an EC2 application that returns mocked HTTP responses Create API Gateway resources and set the integration type value to AWS Create an API Gateway stage and deploy the API.",
       "D. Create API Gateway resources and set the integration type value set to HTTP_PROXY. Add mapping templates and deploy the API. Create an AWS Lambda layer that returns various HTTP status codes Associate the Lambda layer with the API deployment"
     ],
     "correctAnswer": "A",
@@ -2537,10 +2532,10 @@
     "question": "A developer is building an application on AWS. The application has an Amazon API Gateway API thatsends requests to an AWS Lambda function. The API is experiencing increased latency because theLambda function has limited available CPU to fulfill the requests.Before the developer deploys the API into production, the developer must configure the Lambdafunction to have more CPU.Which solution will meet this requirement?",
     "possibleAnswers": [
       "A. Increase the virtual CPU (vCPU) cores quota of the Lambda function.",
-      "E. Configure the Lambda function to use a provisioned concurrency setting.",
       "B. Increase the amount of memory that is allocated to the Lambda function.",
       "C. Increase the ephemeral storage size of the Lambda function.",
-      "D. Increase the timeout value of the Lambda function."
+      "D. Increase the timeout value of the Lambda function.",
+      "E. Configure the Lambda function to use a provisioned concurrency setting."
     ],
     "correctAnswer": "B",
     "number": "228"
@@ -3545,9 +3540,9 @@
     "possibleAnswers": [
       "A. Create an Amazon CloudFront distribution that uses an AWS Lambda@Edge function to processAPI requests. Import the TLS certificate into AWS Certificate Manager and CloudFront. Add thecustom domain name as an alias resource record set that is for the CloudFront distribution.",
       "B. Create an Amazon API Gateway REST API. Use the private endpoint type. Import the TLS certificateinto AWS Certificate Manager. Create a custom domain name for the REST API. Route traffic to thecustom domain name. Disable the default endpoint for the REST API.",
-      "E. Create an Amazon API Gateway REST API. Use the private endpoint type. Import the TLS certificateinto AWS Certificate Manager. Create a custom domain name for the REST API. Route traffic to thecustom domain name. Disable the default endpoint for the REST API.",
       "C. Create an Amazon API Gateway REST API. Use the edge-optimized endpoint type. Import the TLScertificate into AWS Certificate Manager. Create a custom domain name for the REST API. Routetraffic to the custom domain name. Disable the default endpoint for the REST API.",
-      "D. Create an Amazon CloudFront distribution that uses CloudFront Functions to process API requests.Import the TLS certificate into AWS Certificate Manager and CloudFront. Add the custom domainname as an alias resource record set that is for the CloudFront distribution."
+      "D. Create an Amazon CloudFront distribution that uses CloudFront Functions to process API requests.Import the TLS certificate into AWS Certificate Manager and CloudFront. Add the custom domainname as an alias resource record set that is for the CloudFront distribution.",
+      "E. Create an Amazon API Gateway REST API. Use the private endpoint type. Import the TLS certificateinto AWS Certificate Manager. Create a custom domain name for the REST API. Route traffic to thecustom domain name. Disable the default endpoint for the REST API."
     ],
     "correctAnswer": "C",
     "number": "318"
@@ -3586,12 +3581,12 @@
     "number": "321"
   },
   {
-    "question": "A company needs to package and deploy an application that uses AWS Lambda to compress anddecompress video clips. The application uses a video codec library that is larger than 250 MB. Theapplication uses the library to compress the videos before storage and to decompress the videosupon retrieval.",
+    "question": "A company needs to package and deploy an application that uses AWS Lambda to compress and decompress video clips. The application uses a video codec library that is larger than 250 MB. The application uses the library to compress the videos before storage and to decompress the videos upon retrieval.",
     "possibleAnswers": [
-      "A. Create one Lambda function. Upload one zip file that contains code to handle video compressionand decompression to the function. Include the codec library in the zip file.",
-      "B. Create two Lambda functions. Upload one zip file that contains code to handle video compressionto one function. Upload a second zip file that contains code for video decompression to the secondfunction. Include the codec library in both zip files.",
-      "C. Create two Lambda functions. Upload one zip file that contains code to handle video compressionto one function. Upload a second zip file that contains code for video decompression to the secondfunction. Create one Lambda layer for the codec library. Add the layer to both functions.",
-      "D. Create two Lambda functions. Build one container image that contains code to handle videocompression and a second image that contains video decompression code. Add the codec library toboth images. Upload the images to Amazon ECR. Use the containers to create the Lambda functions."
+      "A. Create one Lambda function. Upload one zip file that contains code to handle video compression and decompression to the function. Include the codec library in the zip file.",
+      "B. Create two Lambda functions. Upload one zip file that contains code to handle video compression to one function. Upload a second zip file that contains code for video decompression to the second function. Include the codec library in both zip files.",
+      "C. Create two Lambda functions. Upload one zip file that contains code to handle video compression to one function. Upload a second zip file that contains code for video decompression to the second function. Create one Lambda layer for the codec library. Add the layer to both functions.",
+      "D. Create two Lambda functions. Build one container image that contains code to handle video compression and a second image that contains video decompression code. Add the codec library to both images. Upload the images to Amazon ECR. Use the containers to create the Lambda functions."
     ],
     "correctAnswer": "D",
     "number": "322"
