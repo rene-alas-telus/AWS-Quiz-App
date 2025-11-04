@@ -1,0 +1,3466 @@
+[
+  {
+    "question": "What is the purpose of the `export` statement in a JavaScript module?",
+    "possibleAnswers": [
+      "A. To declare a module’s dependencies",
+      "B. To make variables, functions, or classes available to other modules",
+      "C. To import data from another module",
+      "D. To define global variables"
+    ],
+    "correctAnswer": "B",
+    "number": "1"
+  },
+  {
+    "question": "Which of the following is true about live bindings for exported values?",
+    "possibleAnswers": [
+      "A. Imported values are copies and do not change when the original changes",
+      "B. Imported values are live, and reflect changes to the exported binding",
+      "C. Exported values are frozen and cannot change",
+      "D. Live bindings only apply to default exports"
+    ],
+    "correctAnswer": "B",
+    "number": "2"
+  },
+  {
+    "question": "Which syntax is valid for named exports? Select all that apply.",
+    "possibleAnswers": [
+      "A. `export let a = 1, b = 2;`",
+      "B. `export { a, b };`",
+      "C. `export default a;`",
+      "D. `export function f() {}`"
+    ],
+    "correctAnswer": "ABD",
+    "number": "3"
+  },
+  {
+    "question": "What must be true for a JavaScript file to be treated as a module by the browser?",
+    "possibleAnswers": [
+      "A. It must use `type=\"module\"` in its `<script>` tag",
+      "B. It must import at least one other module",
+      "C. It must export a default value",
+      "D. It must import and export within the same file"
+    ],
+    "correctAnswer": "A",
+    "number": "4"
+  },
+  {
+    "question": "Which one statement about `export default` is correct?",
+    "possibleAnswers": [
+      "A. A module can only have one default export",
+      "B. Default exports cannot be imported with a custom name",
+      "C. Named exports do not support aliasing",
+      "D. Default exports must be functions"
+    ],
+    "correctAnswer": "A",
+    "number": "5"
+  },
+  {
+    "question": "Which keyword is used to share a function, variable, or class from a module for others to use?",
+    "possibleAnswers": [
+      "A. import",
+      "B. require",
+      "C. export",
+      "D. module.exports"
+    ],
+    "correctAnswer": "C",
+    "number": "6"
+  },
+  {
+    "question": "What is the difference between named exports and default exports? Select all that apply.",
+    "possibleAnswers": [
+      "A. Named exports allow multiple exports per module",
+      "B. Default export allows only one export per module",
+      "C. Default exports must have curly braces when imported",
+      "D. Named exports must match the exported names when imported"
+    ],
+    "correctAnswer": "ABD",
+    "number": "7"
+  },
+  {
+    "question": "Which syntax is correct for importing all named exports as an object from a module?",
+    "possibleAnswers": [
+      "A. `import * as Utils from './utils.js';`",
+      "B. `import Utils from './utils.js';`",
+      "C. `import { * } from './utils.js';`",
+      "D. `import { Utils } from './utils.js';`"
+    ],
+    "correctAnswer": "A",
+    "number": "8"
+  },
+  {
+    "question": "What does dynamic import `import(modulePath)` return?",
+    "possibleAnswers": [
+      "A. A module namespace object immediately",
+      "B. A promise that resolves to the module’s exports",
+      "C. A string of the module’s code",
+      "D. Undefined"
+    ],
+    "correctAnswer": "B",
+    "number": "9"
+  },
+  {
+    "question": "Which of the following is true about modules and their execution? Select all that apply.",
+    "possibleAnswers": [
+      "A. A module executes each time it is imported by any module",
+      "B. A module code is executed only once upon its first import",
+      "C. Modules have their own top-level scope (not global)",
+      "D. Modules always operate in non-strict mode"
+    ],
+    "correctAnswer": "BC",
+    "number": "10"
+  },
+  {
+    "question": "What keyword declares a block-scoped, re-assignable local variable in JavaScript?",
+    "possibleAnswers": ["A. var", "B. let", "C. const", "D. define"],
+    "correctAnswer": "B",
+    "number": "11"
+  },
+  {
+    "question": "Which of the following is true about variables declared with `let`?",
+    "possibleAnswers": [
+      "A. They are function-scoped.",
+      "B. They are block-scoped.",
+      "C. They can be redeclared in the same block without error.",
+      "D. They exist in the Temporal Dead Zone until initialization."
+    ],
+    "correctAnswer": "BD",
+    "number": "12"
+  },
+  {
+    "question": "What will the following code output or error? \n```js\nif (true) {\n  let x = 10;\n}\nconsole.log(x);\n```",
+    "possibleAnswers": [
+      "A. 10",
+      "B. undefined",
+      "C. ReferenceError",
+      "D. null"
+    ],
+    "correctAnswer": "C",
+    "number": "13"
+  },
+  {
+    "question": "Which syntax is valid for declaring multiple variables with `let`?",
+    "possibleAnswers": [
+      "A. `let a = 1, b = 2;`",
+      "B. `let a = 1; let b = 2;`",
+      "C. `let a, b;`",
+      "D. All of the above"
+    ],
+    "correctAnswer": "D",
+    "number": "14"
+  },
+  {
+    "question": "Which statement describes a key difference between `var` and `let`?",
+    "possibleAnswers": [
+      "A. `var` is block-scoped, `let` is function-scoped",
+      "B. `var` is function-scoped, `let` is block-scoped",
+      "C. `let` is hoisted, `var` is not",
+      "D. `var` cannot be reassigned, `let` can"
+    ],
+    "correctAnswer": "B",
+    "number": "15"
+  },
+  {
+    "question": "What does the `let` keyword do in JavaScript when declaring a variable?",
+    "possibleAnswers": [
+      "A. Declares a constant that cannot be changed",
+      "B. Declares a block-scoped variable that can be reassigned",
+      "C. Declares a global variable regardless of location",
+      "D. Declares a variable that cannot be initialized"
+    ],
+    "correctAnswer": "B",
+    "number": "16"
+  },
+  {
+    "question": "Which of the following is true about `var`, `let`, and `const` keywords? Select all that apply.",
+    "possibleAnswers": [
+      "A. `var` is function-scoped or global",
+      "B. `let` is block-scoped and allows reassignment",
+      "C. `const` is block-scoped and cannot be reassigned",
+      "D. `let` cannot be reassigned after initialization"
+    ],
+    "correctAnswer": "ABC",
+    "number": "17"
+  },
+  {
+    "question": "What happens if you declare a variable twice with `let` in the same scope?",
+    "possibleAnswers": [
+      "A. It will simply overwrite the previous variable",
+      "B. A SyntaxError will occur",
+      "C. The second declaration is ignored",
+      "D. It transforms into a `var` variable"
+    ],
+    "correctAnswer": "B",
+    "number": "18"
+  },
+  {
+    "question": "Which metaphor does the article use to help understand variables in JavaScript?",
+    "possibleAnswers": [
+      "A. A container or box holding data",
+      "B. A light bulb turning on",
+      "C. A folder on the desktop",
+      "D. A socket waiting for data"
+    ],
+    "correctAnswer": "A",
+    "number": "19"
+  },
+  {
+    "question": "What is the scope difference when using `let` compared to `var` inside a block?",
+    "possibleAnswers": [
+      "A. `let` is visible outside the block, `var` is not",
+      "B. `var` is visible outside the block, `let` is not",
+      "C. Both are visible outside the block",
+      "D. Both are not visible outside the block"
+    ],
+    "correctAnswer": "B",
+    "number": "20"
+  },
+  {
+    "question": "What does the rest parameter syntax (...) do in JavaScript?",
+    "possibleAnswers": [
+      "A. Spreads array elements into separate values",
+      "B. Collects multiple arguments into an array",
+      "C. Duplicates all parameters",
+      "D. Creates a copy of an array"
+    ],
+    "correctAnswer": "B",
+    "number": "21"
+  },
+  {
+    "question": "Where must the rest parameter be placed in a function definition?",
+    "possibleAnswers": [
+      "A. Anywhere in the parameter list",
+      "B. Before default parameters",
+      "C. After all other parameters",
+      "D. Between required parameters"
+    ],
+    "correctAnswer": "C",
+    "number": "22"
+  },
+  {
+    "question": "What is the main use of spread syntax in arrays?",
+    "possibleAnswers": [
+      "A. To merge or copy arrays easily",
+      "B. To loop through arrays",
+      "C. To declare variables dynamically",
+      "D. To create nested arrays"
+    ],
+    "correctAnswer": "A",
+    "number": "23"
+  },
+  {
+    "question": "Which statement correctly describes the relationship between rest and spread syntax?",
+    "possibleAnswers": [
+      "A. Rest expands elements while spread collects them",
+      "B. Both are used only for arrays",
+      "C. Rest collects items into an array, spread expands them",
+      "D. They are interchangeable in all contexts"
+    ],
+    "correctAnswer": "C",
+    "number": "24"
+  },
+  {
+    "question": "Which of the following can be used with spread syntax?",
+    "possibleAnswers": [
+      "A. Arrays",
+      "B. Strings",
+      "C. Sets",
+      "D. All of the above"
+    ],
+    "correctAnswer": "D",
+    "number": "25"
+  },
+  {
+    "question": "What happens when using spread syntax to copy an object containing nested properties?",
+    "possibleAnswers": [
+      "A. A deep copy is created",
+      "B. A shallow copy is created",
+      "C. The object is cloned recursively",
+      "D. The nested properties are automatically duplicated"
+    ],
+    "correctAnswer": "B",
+    "number": "26"
+  },
+  {
+    "question": "Which of the following demonstrates using spread syntax to pass array elements as arguments?",
+    "possibleAnswers": [
+      "A. Math.max(array)",
+      "B. Math.max(...array)",
+      "C. Math.max([array])",
+      "D. Math.max(...[...array])"
+    ],
+    "correctAnswer": "B",
+    "number": "27"
+  },
+  {
+    "question": "What is the correct syntax for using a rest parameter in a function definition?",
+    "possibleAnswers": [
+      "A. function f(...args, b) {}",
+      "B. function f(a, b, ...args) {}",
+      "C. function f(...args) {}",
+      "D. Both B and C"
+    ],
+    "correctAnswer": "D",
+    "number": "28"
+  },
+  {
+    "question": "Which of the following is true about the relationship between rest parameters and the arguments object?",
+    "possibleAnswers": [
+      "A. The arguments object is a true Array, rest parameters produce an array-like object",
+      "B. Rest parameters produce a real Array, arguments object is array-like",
+      "C. Both rest parameters and arguments object always sync when a named parameter changes",
+      "D. Rest parameters cannot be used if default parameters are present"
+    ],
+    "correctAnswer": "B",
+    "number": "29"
+  },
+  {
+    "question": "According to JavaScript.info: When you see `...` in code, how can you determine if it's rest or spread?",
+    "possibleAnswers": [
+      "A. If it’s in a variable assignment it's spread, if it’s in a function parameter list it’s rest",
+      "B. If it’s at the end of function parameters it's rest, if it’s used in function calls or array/object literals it’s spread",
+      "C. If it precedes an object literal it’s rest, if it precedes an array it’s spread",
+      "D. There’s no way to tell"
+    ],
+    "correctAnswer": "B",
+    "number": "30"
+  },
+  {
+    "question": "Which restrictions apply to rest parameters in JavaScript? Select all that apply.",
+    "possibleAnswers": [
+      "A. Only one rest parameter is allowed per function",
+      "B. The rest parameter must be last in the function parameter list",
+      "C. Trailing commas are allowed after a rest parameter",
+      "D. A default value cannot be assigned to a rest parameter"
+    ],
+    "correctAnswer": "ABD",
+    "number": "31"
+  },
+  {
+    "question": "What is the primary purpose of spread syntax when used with arrays or iterables?",
+    "possibleAnswers": [
+      "A. To collect multiple elements into a single array",
+      "B. To expand an iterable into individual elements",
+      "C. To convert an object into an array",
+      "D. To create a default parameter"
+    ],
+    "correctAnswer": "B",
+    "number": "32"
+  },
+  {
+    "question": "What happens when you use spread syntax to copy an array containing nested objects?",
+    "possibleAnswers": [
+      "A. It creates a deep copy including nested objects",
+      "B. It creates a shallow copy; nested object references remain the same",
+      "C. It flattens nested objects into the top level",
+      "D. It throws an error"
+    ],
+    "correctAnswer": "B",
+    "number": "33"
+  },
+  {
+    "question": "Which syntax correctly imports a default export from a JavaScript module?",
+    "possibleAnswers": [
+      "A. import { MathHelper } from './math-utils.js';",
+      "B. require('./math-utils.js').default;",
+      "C. import * as MathHelper from './math-utils.js';",
+      "D. import MathHelper from './math-utils.js';"
+    ],
+    "correctAnswer": "D",
+    "number": "34"
+  },
+  {
+    "question": "What is the key difference between const and let in JavaScript?",
+    "possibleAnswers": [
+      "A. const cannot be reassigned after declaration while let can be reassigned",
+      "B. const is function-scoped while let is block-scoped",
+      "C. let is hoisted to the top of its scope while const is not",
+      "D. const can only be used for numeric values"
+    ],
+    "correctAnswer": "A",
+    "number": "35"
+  },
+  {
+    "question": "What is the value of finalProps in the following code?\n\nconst defaults = { theme: 'dark', size: 'medium', animate: true };\nconst custom = { size: 'large', timeout: 3000 };\nconst finalProps = { ...defaults, ...custom };",
+    "possibleAnswers": [
+      "A. { theme: 'dark', size: 'medium', animate: true, timeout: 3000 }",
+      "B. { theme: 'dark', size: 'large', animate: true, timeout: 3000 }",
+      "C. { size: 'large', timeout: 3000 }",
+      "D. { theme: 'dark', size: 'large' }"
+    ],
+    "correctAnswer": "B",
+    "number": "36"
+  },
+  {
+    "question": "What is the output of the following code?\n\nfunction example(a, b, ...rest) {\n  return rest;\n}\n\nconsole.log(example(1, 2, 3, 4, 5));",
+    "possibleAnswers": [
+      "A. [3, 4, 5]",
+      "B. [1, 2, 3, 4, 5]",
+      "C. undefined",
+      "D. [1, 2]"
+    ],
+    "correctAnswer": "A",
+    "number": "37"
+  },
+  {
+    "question": "What will be the values of x and y after executing the following code?\n\nconst coordinates = [10, 20, 30];\nconst [x, , y] = coordinates;",
+    "possibleAnswers": [
+      "A. x = 10, y = 30",
+      "B. x = 10, y = 20",
+      "C. x = undefined, y = undefined",
+      "D. x = 20, y = 30"
+    ],
+    "correctAnswer": "A",
+    "number": "38"
+  },
+  {
+    "question": "What key difference exists between traditional functions and arrow functions in JavaScript?",
+    "possibleAnswers": [
+      "A. Arrow functions don't have their own 'this' binding",
+      "B. Arrow functions are always asynchronous",
+      "C. Arrow functions can only be used as callbacks",
+      "D. Traditional functions cannot be assigned to variables"
+    ],
+    "correctAnswer": "A",
+    "number": "39"
+  },
+  {
+    "question": "What will be the output of the following JavaScript code?\n\nconst numbers = [1, 2, 3, 4, 5];\nconst result = numbers.filter(num => num > 2).map(num => num * 2);\nconsole.log(result);",
+    "possibleAnswers": [
+      "A. [2, 4, 6, 8, 10]",
+      "B. [2, 3, 4, 5]",
+      "C. [3, 4, 5]",
+      "D. [6, 8, 10]"
+    ],
+    "correctAnswer": "D",
+    "number": "40"
+  },
+  {
+    "question": "What is the correct way to handle errors when using async/await?",
+    "possibleAnswers": [
+      "A. Add a second callback to the async function",
+      "B. Use try/catch blocks around await expressions",
+      "C. Errors in async functions cannot be caught",
+      "D. Chain .error() to the await expression"
+    ],
+    "correctAnswer": "B",
+    "number": "41"
+  },
+  {
+    "question": "42. Which syntax correctly skips an element in array destructuring?",
+    "possibleAnswers": [
+      "A. const [a, b] = arr;",
+      "B. const [a, , b] = arr;",
+      "C. const {a, , b} = arr;",
+      "D. const [ , a, b] = arr;"
+    ],
+    "correctAnswer": "B",
+    "number": "42"
+  },
+  {
+    "question": "What is true about object destructuring with aliasing?",
+    "possibleAnswers": [
+      "A. const {a: x} = obj; assigns obj.a to x",
+      "B. const {a: x} = obj; assigns obj.x to a",
+      "C. Aliasing is not allowed in destructuring",
+      "D. Aliasing only works for arrays"
+    ],
+    "correctAnswer": "A",
+    "number": "43"
+  },
+  {
+    "question": "Which of the following are valid uses of rest pattern in destructuring? Select all that apply.",
+    "possibleAnswers": [
+      "A. const [a, ...rest] = arr;",
+      "B. const {a, ...rest} = obj;",
+      "C. const [...rest, a] = arr;",
+      "D. const {…rest, a} = obj;"
+    ],
+    "correctAnswer": "AB",
+    "number": "44"
+  },
+  {
+    "question": "Which statement describes array vs. object destructuring correctly?",
+    "possibleAnswers": [
+      "A. Array destructuring uses property names, object destructuring uses indexes",
+      "B. Object destructuring uses property names, array destructuring uses positional indexes",
+      "C. Array destructuring cannot skip elements",
+      "D. Object destructuring is destructive to the original object"
+    ],
+    "correctAnswer": "B",
+    "number": "45"
+  },
+  {
+    "question": "What happens if you destructure a property that does not exist and provide a default value?",
+    "possibleAnswers": [
+      "A. It throws a ReferenceError",
+      "B. The variable becomes undefined",
+      "C. The variable takes the default value",
+      "D. The destructuring fails entirely"
+    ],
+    "correctAnswer": "C",
+    "number": "46"
+  },
+  {
+    "question": "What is a key difference between arrow functions and traditional functions regarding 'this'?",
+    "possibleAnswers": [
+      "A. Arrow functions have their own 'this'",
+      "B. Arrow functions inherit 'this' from the surrounding scope",
+      "C. Traditional functions inherit 'this' from the surrounding scope",
+      "D. Arrow functions cannot access 'this' at all"
+    ],
+    "correctAnswer": "B",
+    "number": "47"
+  },
+  {
+    "question": "Which of the following are valid syntaxes for arrow functions? Select all that apply.",
+    "possibleAnswers": [
+      "A. const sum = (a, b) => a + b;",
+      "B. const square = x => x * x;",
+      "C. const greet = () => console.log('Hi');",
+      "D. const add = function(a, b) => a + b;"
+    ],
+    "correctAnswer": "ABC",
+    "number": "48"
+  },
+  {
+    "question": "Why might arrow functions be unsuitable as object methods when dynamic 'this' is needed?",
+    "possibleAnswers": [
+      "A. They always bind 'this' lexically from the outer scope",
+      "B. They cannot access object properties",
+      "C. They do not allow parameters",
+      "D. They require explicit return statements"
+    ],
+    "correctAnswer": "A",
+    "number": "49"
+  },
+  {
+    "question": "Which statements about arrow functions are true? Select all that apply.",
+    "possibleAnswers": [
+      "A. They can be used as constructors",
+      "B. They have no prototype",
+      "C. They can have an implicit return for a single expression",
+      "D. They are always anonymous unless assigned to a variable"
+    ],
+    "correctAnswer": "BCD",
+    "number": "50"
+  },
+  {
+    "question": "How do arrow functions improve code readability in array operations like map and filter?",
+    "possibleAnswers": [
+      "A. By shortening the function syntax and allowing implicit return",
+      "B. By requiring verbose function declarations",
+      "C. By automatically binding 'this' dynamically for each element",
+      "D. By eliminating the need for callback functions"
+    ],
+    "correctAnswer": "A",
+    "number": "51"
+  },
+  {
+    "question": "Which of the following are valid ways to create an array in JavaScript?",
+    "possibleAnswers": [
+      "A. const arr = [1, 2, 3];",
+      "B. const arr = Array(5);",
+      "C. const arr = new Array(1, 2, 3);",
+      "D. const arr = (1, 2, 3);"
+    ],
+    "correctAnswer": "ABC",
+    "number": "52"
+  },
+  {
+    "question": "Which array methods are mutating (change the original array)? Select all that apply.",
+    "possibleAnswers": [
+      "A. push()",
+      "B. pop()",
+      "C. slice()",
+      "D. splice()",
+      "E. concat()"
+    ],
+    "correctAnswer": "ABD",
+    "number": "53"
+  },
+  {
+    "question": "What is the purpose of the map() method in JavaScript arrays?",
+    "possibleAnswers": [
+      "A. To transform each element of an array into a new array",
+      "B. To filter elements based on a condition",
+      "C. To reduce array elements into a single value",
+      "D. To find the index of a specific element"
+    ],
+    "correctAnswer": "A",
+    "number": "54"
+  },
+  {
+    "question": "Which array methods do not mutate the original array? Select all that apply.",
+    "possibleAnswers": [
+      "A. slice()",
+      "B. filter()",
+      "C. push()",
+      "D. concat()",
+      "E. splice()"
+    ],
+    "correctAnswer": "ABD",
+    "number": "55"
+  },
+  {
+    "question": "Which statements about JavaScript arrays are correct? Select all that apply.",
+    "possibleAnswers": [
+      "A. Arrays can hold elements of different types",
+      "B. Array indices start at 1",
+      "C. Arrays have a length property",
+      "D. Arrays are zero-indexed and mutable"
+    ],
+    "correctAnswer": "ACD",
+    "number": "56"
+  },
+  {
+    "question": "Which of the following correctly describes the states of a JavaScript Promise?",
+    "possibleAnswers": [
+      "A. pending",
+      "B. fulfilled",
+      "C. rejected",
+      "D. complete"
+    ],
+    "correctAnswer": "ABC",
+    "number": "57"
+  },
+  {
+    "question": "Which methods are used to handle a resolved or rejected promise? Select all that apply.",
+    "possibleAnswers": [
+      "A. then()",
+      "B. catch()",
+      "C. finally()",
+      "D. await()"
+    ],
+    "correctAnswer": "ABC",
+    "number": "58"
+  },
+  {
+    "question": "Which statement is true about chaining promises?",
+    "possibleAnswers": [
+      "A. Each then() can return a new value or promise",
+      "B. Errors in the chain are ignored unless manually handled",
+      "C. catch() at the end can handle any error from previous promises",
+      "D. Promises cannot be chained"
+    ],
+    "correctAnswer": "AC",
+    "number": "59"
+  },
+  {
+    "question": "Which of the following are true about async/await? Select all that apply.",
+    "possibleAnswers": [
+      "A. await pauses the async function until the promise resolves",
+      "B. async functions always return a promise",
+      "C. Error handling requires try/catch",
+      "D. await can only be used outside async functions"
+    ],
+    "correctAnswer": "ABC",
+    "number": "60"
+  },
+  {
+    "question": "What is the purpose of Promise.all()?",
+    "possibleAnswers": [
+      "A. Executes multiple promises in parallel and waits for all to resolve",
+      "B. Returns the first promise that resolves or rejects",
+      "C. Converts synchronous functions to asynchronous",
+      "D. Cancels all promises"
+    ],
+    "correctAnswer": "A",
+    "number": "61"
+  },
+  {
+    "question": "What is the correct way to initialize a React root using the createRoot API?",
+    "possibleAnswers": [
+      "A. const root = createRoot();",
+      "B. const root = createRoot(domNode, options?);",
+      "C. const root = ReactDOM.render(domNode, <App />);",
+      "D. const root = createRoot(<App />, domNode);"
+    ],
+    "correctAnswer": "B",
+    "number": "62"
+  },
+  {
+    "question": "Which methods are available on the object returned by createRoot? Select all that apply.",
+    "possibleAnswers": [
+      "A. render()",
+      "B. unmount()",
+      "C. hydrate()",
+      "D. update()"
+    ],
+    "correctAnswer": "AB",
+    "number": "63"
+  },
+  {
+    "question": "Why was createRoot introduced in React 18 and beyond? Select all that apply.",
+    "possibleAnswers": [
+      "A. To enable concurrent rendering features",
+      "B. To replace support for server-side rendering entirely",
+      "C. To allow multiple root containers on a page",
+      "D. To deprecate ReactDOM.render"
+    ],
+    "correctAnswer": "ACD",
+    "number": "64"
+  },
+  {
+    "question": "Which statement is true about calling root.unmount()?",
+    "possibleAnswers": [
+      "A. After calling unmount(), you can still call root.render() on the same root.",
+      "B. unmount() detaches React from the DOM node and cleans up event handlers and subscriptions.",
+      "C. unmount() resets the container to its original HTML state automatically.",
+      "D. unmount() only works for class-components, not function components."
+    ],
+    "correctAnswer": "B",
+    "number": "65"
+  },
+  {
+    "question": "What happens if you call createRoot on a DOM element that already has a React root created for it?",
+    "possibleAnswers": [
+      "A. React will ignore the second call and reuse the existing root.",
+      "B. React will warn or error: “You are calling createRoot on a container that has already been passed to createRoot() before.”",
+      "C. It’s valid and recommended to create multiple roots for the same container.",
+      "D. The DOM node becomes unmanageable by React from that point."
+    ],
+    "correctAnswer": "B",
+    "number": "66"
+  },
+  {
+    "question": "What is the first step when adding React to an existing project using React.dev’s recommended approach?",
+    "possibleAnswers": [
+      "A. Rewrite the entire application in React immediately",
+      "B. Create a container element in the HTML where React will mount",
+      "C. Ignore your existing build tooling and start from scratch",
+      "D. Remove all existing JavaScript and replace with React"
+    ],
+    "correctAnswer": "B",
+    "number": "67"
+  },
+  {
+    "question": "Which dependencies must you install when embedding React components into an existing project?",
+    "possibleAnswers": ["A. react", "B. react-dom", "C. vue", "D. angular"],
+    "correctAnswer": "AB",
+    "number": "68"
+  },
+  {
+    "question": "Which statement about integrating React into a sub-route of an existing website is true?",
+    "possibleAnswers": [
+      "A. You must convert the entire website to React",
+      "B. You can specify a base path (e.g., `/some-app/`) and proxy requests to the React app",
+      "C. React cannot be used with any server technology already in place",
+      "D. You should avoid using build tools or bundlers"
+    ],
+    "correctAnswer": "B",
+    "number": "69"
+  },
+  {
+    "question": "When rendering a React component inside an existing HTML page, which method should you use (React 18+)?",
+    "possibleAnswers": [
+      "A. ReactDOM.render(<App />, domNode);",
+      "B. createRoot(domNode).render(<App />);",
+      "C. React.create(<App />, domNode);",
+      "D. React.render(<App />, domNode);"
+    ],
+    "correctAnswer": "B",
+    "number": "70"
+  },
+  {
+    "question": "Which of the following are true when adding React to an existing project? Select all that apply.",
+    "possibleAnswers": [
+      "A. You need to have a modular JavaScript environment with `import`/`export` if using JSX",
+      "B. You must use `<script>` tags only, and bundlers are never allowed",
+      "C. You can gradually adopt React—only in parts of your application",
+      "D. You cannot use React in just one section of your HTML"
+    ],
+    "correctAnswer": "AC",
+    "number": "71"
+  },
+  {
+    "question": "What is the correct syntax for creating a React element using createElement?",
+    "possibleAnswers": [
+      "A. createElement(type, props, ...children);",
+      "B. createElement(type, ...children, props);",
+      "C. createElement(props, type, ...children);",
+      "D. createElement(type, propsArray);"
+    ],
+    "correctAnswer": "A",
+    "number": "72"
+  },
+  {
+    "question": "Which of the following are valid values for the `type` parameter in React.createElement? Select all that apply.",
+    "possibleAnswers": [
+      "A. A string like 'div'",
+      "B. A function component",
+      "C. A class component",
+      "D. A boolean value"
+    ],
+    "correctAnswer": "ABC",
+    "number": "73"
+  },
+  {
+    "question": "What will `createElement` return?",
+    "possibleAnswers": [
+      "A. A DOM node",
+      "B. A plain JavaScript object representing a React element",
+      "C. A string of HTML",
+      "D. A Promise of a React element"
+    ],
+    "correctAnswer": "B",
+    "number": "74"
+  },
+  {
+    "question": "Which of these statements about the `props` argument in createElement is true?",
+    "possibleAnswers": [
+      "A. `props` cannot be null",
+      "B. `key` and `ref` will appear inside `props` on the returned element",
+      "C. `props` may be null, and `key` or `ref` passed will appear separately as `element.key` and `element.ref`",
+      "D. `props` must always include children"
+    ],
+    "correctAnswer": "C",
+    "number": "75"
+  },
+  {
+    "question": "Why might you choose to use React.createElement instead of JSX? Select all that apply.",
+    "possibleAnswers": [
+      "A. When you don’t have a build step to compile JSX",
+      "B. When you need to create elements dynamically at runtime without JSX syntax",
+      "C. When you want to maximize readability for large component trees",
+      "D. When you want to avoid the concept of React elements entirely"
+    ],
+    "correctAnswer": "AB",
+    "number": "76"
+  },
+  {
+    "question": "How is React different from PHP, ASP, or JSP?",
+    "possibleAnswers": [
+      "A. React is not a language",
+      "B. React is a server-side language",
+      "C. React is a plugin for PHP",
+      "D. React is a native browser API"
+    ],
+    "correctAnswer": "A",
+    "number": "77"
+  },
+  {
+    "question": "What function is used to create a root for rendering React elements into the DOM?",
+    "possibleAnswers": [
+      "A. renderRoot()",
+      "B. ReactDOM.render()",
+      "C. createRoot()",
+      "D. ReactDOM.hydrate()"
+    ],
+    "correctAnswer": "C",
+    "number": "78"
+  },
+  {
+    "question": "When adding React to an existing project, what is the recommended approach?",
+    "possibleAnswers": [
+      "A. Convert the entire website to a single-page application first",
+      "B. Add React to specific containers while keeping the existing codebase intact",
+      "C. Rewrite the entire application in React before deploying",
+      "D. Replace all existing HTML with JSX components immediately"
+    ],
+    "correctAnswer": "B",
+    "number": "79"
+  },
+  {
+    "question": "What is the correct way to create a React element representing an h1 tag with the text 'Hello, world!' using the createElement function?",
+    "possibleAnswers": [
+      "A. React.createElement(h1, {}, 'Hello, world!')",
+      "B. React.createElement({type: 'h1', content: 'Hello, world!'})",
+      "C. React.createNode('h1', 'Hello, world!')",
+      "D. React.createElement('h1', {}, 'Hello, world!')"
+    ],
+    "correctAnswer": "D",
+    "number": "80"
+  },
+  {
+    "question": "What is JSX in React?",
+    "possibleAnswers": [
+      "A. A templating language separate from JavaScript",
+      "B. A syntax extension that allows writing HTML-like markup in JavaScript",
+      "C. A React-specific data structure for managing state",
+      "D. A CSS preprocessor for React components"
+    ],
+    "correctAnswer": "B",
+    "number": "81"
+  },
+  {
+    "question": "Which of the following JSX elements is valid?",
+    "possibleAnswers": [
+      "A. return <div><p>Hello</div></p>;",
+      "B. return <div>Hello</div>;",
+      "C. return <div><p>Hello</p>;",
+      "D. return <p>Hello</div>;"
+    ],
+    "correctAnswer": "B",
+    "number": "82"
+  },
+  {
+    "question": "What must JSX expressions be wrapped in before returning from a component?",
+    "possibleAnswers": [
+      "A. A single parent element",
+      "B. Multiple sibling elements",
+      "C. A list of nodes",
+      "D. Curly braces"
+    ],
+    "correctAnswer": "A",
+    "number": "83"
+  },
+  {
+    "question": "How can you embed JavaScript expressions inside JSX?",
+    "possibleAnswers": [
+      "A. Using parentheses ()",
+      "B. Using curly braces {}",
+      "C. Using square brackets []",
+      "D. Using double quotes \"\""
+    ],
+    "correctAnswer": "B",
+    "number": "84"
+  },
+  {
+    "question": "What is the correct way to add a dynamic variable to JSX?",
+    "possibleAnswers": [
+      "A. <h1>userName</h1>",
+      "B. <h1>${userName}</h1>",
+      "C. <h1>{userName}</h1>",
+      "D. <h1>userName()</h1>"
+    ],
+    "correctAnswer": "C",
+    "number": "85"
+  },
+  {
+    "question": "What are React Fragments used for?",
+    "possibleAnswers": [
+      "A. To create reusable hooks",
+      "B. To group multiple elements without adding extra DOM nodes",
+      "C. To cache component renders",
+      "D. To manage application state globally"
+    ],
+    "correctAnswer": "B",
+    "number": "86"
+  },
+  {
+    "question": "Which syntax correctly uses a React Fragment?",
+    "possibleAnswers": [
+      "A. return <div></div>;",
+      "B. return <></>;",
+      "C. return <fragment></fragment>;",
+      "D. return <React.Fragment></React.Fragment>;"
+    ],
+    "correctAnswer": "BD",
+    "number": "87"
+  },
+  {
+    "question": "Why might you prefer using Fragments instead of a <div> wrapper?",
+    "possibleAnswers": [
+      "A. Fragments make styling easier",
+      "B. Fragments prevent unnecessary DOM elements from being created",
+      "C. Fragments improve accessibility by default",
+      "D. Fragments automatically optimize component rendering"
+    ],
+    "correctAnswer": "B",
+    "number": "88"
+  },
+  {
+    "question": "What is the short syntax for React.Fragment?",
+    "possibleAnswers": [
+      "A. <Fragment></Fragment>",
+      "B. <ReactFrag></ReactFrag>",
+      "C. <></>",
+      "D. <F></F>"
+    ],
+    "correctAnswer": "C",
+    "number": "89"
+  },
+  {
+    "question": "Which of the following is TRUE about React Fragments?",
+    "possibleAnswers": [
+      "A. They can have keys when mapped in lists",
+      "B. They always render extra elements in the DOM",
+      "C. They cannot be used inside loops",
+      "D. They are only supported in React Native"
+    ],
+    "correctAnswer": "A",
+    "number": "90"
+  },
+  {
+    "question": "What do curly braces {} allow you to do inside JSX?",
+    "possibleAnswers": [
+      "A. Write HTML comments inside JSX",
+      "B. Embed JavaScript expressions within JSX",
+      "C. Add inline styles to components",
+      "D. Indicate conditional rendering blocks"
+    ],
+    "correctAnswer": "B",
+    "number": "91"
+  },
+  {
+    "question": "Which of the following is a valid use of curly braces in JSX?",
+    "possibleAnswers": [
+      "A. <h1>\"Hello \" + user.name</h1>",
+      "B. <h1>{'Hello ' + user.name}</h1>",
+      "C. <h1>(\"Hello \" + user.name)</h1>",
+      "D. <h1>['Hello ', user.name]</h1>"
+    ],
+    "correctAnswer": "B",
+    "number": "92"
+  },
+  {
+    "question": "What can you include inside JSX curly braces?",
+    "possibleAnswers": [
+      "A. Only strings and numbers",
+      "B. Only variables declared with const",
+      "C. Any valid JavaScript expression",
+      "D. Only function calls that return JSX"
+    ],
+    "correctAnswer": "C",
+    "number": "93"
+  },
+  {
+    "question": "What will this JSX expression render?\nconst name = \"Rene\";\n<p>Hello, {name}!</p>",
+    "possibleAnswers": [
+      "A. A syntax error",
+      "B. The literal text: Hello, {name}!",
+      "C. Hello, Rene!",
+      "D. Nothing will be rendered"
+    ],
+    "correctAnswer": "C",
+    "number": "94"
+  },
+  {
+    "question": "How do you include a function result inside JSX?",
+    "possibleAnswers": [
+      "A. Use parentheses directly inside JSX",
+      "B. Use curly braces around the function call",
+      "C. Declare the function inside the JSX",
+      "D. Wrap it in backticks and curly braces"
+    ],
+    "correctAnswer": "B",
+    "number": "95"
+  },
+  {
+    "question": "Which of the following is NOT a valid expression inside JSX curly braces?",
+    "possibleAnswers": [
+      "A. user.name",
+      "B. 2 + 2",
+      "C. if (user) { 'Hi' }",
+      "D. formatDate(user.birthday)"
+    ],
+    "correctAnswer": "C",
+    "number": "96"
+  },
+  {
+    "question": "What happens if a JavaScript expression inside curly braces returns null or undefined?",
+    "possibleAnswers": [
+      "A. It throws an error",
+      "B. React will render nothing",
+      "C. React will display “undefined”",
+      "D. The app will crash"
+    ],
+    "correctAnswer": "B",
+    "number": "97"
+  },
+  {
+    "question": "How can you conditionally render text in JSX using curly braces?",
+    "possibleAnswers": [
+      "A. {isLoggedIn ? 'Welcome!' : 'Please sign in.'}",
+      "B. if (isLoggedIn) { 'Welcome!' } else { 'Please sign in.' }",
+      "C. {'Welcome!' && isLoggedIn}",
+      "D. <if isLoggedIn>Welcome!</if>"
+    ],
+    "correctAnswer": "A",
+    "number": "98"
+  },
+  {
+    "question": "What is the correct way to display a list’s length inside JSX?",
+    "possibleAnswers": [
+      "A. <p>List has list.length items</p>",
+      "B. <p>List has {list.length} items</p>",
+      "C. <p>{'List has ' + list.length + ' items'}</p>",
+      "D. Both B and C"
+    ],
+    "correctAnswer": "D",
+    "number": "99"
+  },
+  {
+    "question": "How do you combine JSX with JavaScript template literals?",
+    "possibleAnswers": [
+      "A. Wrap JSX in backticks",
+      "B. Use backticks and ${} inside curly braces",
+      "C. Use curly braces and string concatenation",
+      "D. You cannot use template literals in JSX"
+    ],
+    "correctAnswer": "B",
+    "number": "100"
+  },
+  {
+    "question": "What is the recommended way to render multiple items in React?",
+    "possibleAnswers": [
+      "A. Using a for loop directly inside JSX",
+      "B. Using the map() method to create an array of elements",
+      "C. Using a while loop inside JSX",
+      "D. Using document.write()"
+    ],
+    "correctAnswer": "B",
+    "number": "101"
+  },
+  {
+    "question": "Why should each element in a list have a unique key in React?",
+    "possibleAnswers": [
+      "A. To improve styling",
+      "B. To help React identify which items have changed, added, or removed",
+      "C. To increase performance by avoiding loops",
+      "D. To allow use of inline functions"
+    ],
+    "correctAnswer": "B",
+    "number": "102"
+  },
+  {
+    "question": "Which of the following is a valid way to assign keys when rendering a list?",
+    "possibleAnswers": [
+      "A. <li key={index}>{item}</li>",
+      "B. <li key={Math.random()}>{item}</li>",
+      "C. <li>{item}</li>",
+      "D. <li key='static'>{item}</li>"
+    ],
+    "correctAnswer": "A",
+    "number": "103"
+  },
+  {
+    "question": "What happens if list elements do not have keys in React?",
+    "possibleAnswers": [
+      "A. React will throw a compilation error",
+      "B. React will warn and may re-render inefficiently, potentially causing bugs",
+      "C. The application will crash",
+      "D. Nothing happens"
+    ],
+    "correctAnswer": "B",
+    "number": "104"
+  },
+  {
+    "question": "Which is the correct way to render an array of components inside JSX?",
+    "possibleAnswers": [
+      "A. const items = ['a', 'b', 'c']; <ul>{items.map(item => <li>{item}</li>)}</ul>",
+      "B. const items = ['a', 'b', 'c']; <ul>{for(item of items) { <li>{item}</li> }}</ul>",
+      "C. const items = ['a', 'b', 'c']; <ul>{items.forEach(item => <li>{item}</li>)}</ul>",
+      "D. const items = ['a', 'b', 'c']; <ul>{document.write(items)}</ul>"
+    ],
+    "correctAnswer": "A",
+    "number": "105"
+  },
+  {
+    "question": "When rendering dynamic lists, what is the preferred key for stable identification?",
+    "possibleAnswers": [
+      "A. Array index",
+      "B. Random numbers",
+      "C. A unique ID from the data itself",
+      "D. The item value as a string"
+    ],
+    "correctAnswer": "C",
+    "number": "106"
+  },
+  {
+    "question": "Can fragments be used when rendering lists in React?",
+    "possibleAnswers": [
+      "A. Yes, to avoid extra DOM nodes while still providing keys",
+      "B. No, fragments cannot be used with lists",
+      "C. Only when using arrays of numbers",
+      "D. Only inside class components"
+    ],
+    "correctAnswer": "A",
+    "number": "107"
+  },
+  {
+    "question": "How can you render nested lists efficiently in React?",
+    "possibleAnswers": [
+      "A. Map over parent array, then map over child array inside JSX",
+      "B. Use multiple while loops",
+      "C. Concatenate all strings before rendering",
+      "D. Use innerHTML"
+    ],
+    "correctAnswer": "A",
+    "number": "108"
+  },
+  {
+    "question": "What is a potential problem if you use array indexes as keys?",
+    "possibleAnswers": [
+      "A. It is always safe to use indexes",
+      "B. Reordering items can cause inefficient re-renders and state issues",
+      "C. It prevents rendering of children",
+      "D. It breaks JSX syntax"
+    ],
+    "correctAnswer": "B",
+    "number": "109"
+  },
+  {
+    "question": "Which of these is a correct pattern for rendering a list of components with unique keys?",
+    "possibleAnswers": [
+      "A. <ul>{items.map(item => <li key={item.id}>{item.name}</li>)}</ul>",
+      "B. <ul>{items.map(item => <li>{item.name}</li>)}</ul>",
+      "C. <ul>{for(item in items) { <li>{item.name}</li> }}</ul>",
+      "D. <ul>{items.forEach(item => <li>{item.name}</li>)}</ul>"
+    ],
+    "correctAnswer": "A",
+    "number": "110"
+  },
+  {
+    "question": "What is conditional rendering in React?",
+    "possibleAnswers": [
+      "A. Rendering components only once",
+      "B. Rendering different elements or components based on a condition",
+      "C. Rendering components without props",
+      "D. Rendering components outside the root element"
+    ],
+    "correctAnswer": "B",
+    "number": "111"
+  },
+  {
+    "question": "Which of the following is a valid way to render content conditionally in JSX?",
+    "possibleAnswers": [
+      "A. Using the ternary operator inside JSX",
+      "B. Using if statements directly inside JSX",
+      "C. Using while loops in JSX",
+      "D. Using switch statements inside JSX"
+    ],
+    "correctAnswer": "A",
+    "number": "112"
+  },
+  {
+    "question": "How can you conditionally render a component only if a condition is true?",
+    "possibleAnswers": [
+      "A. {condition && <Component />}",
+      "B. if (condition) {<Component />} inside JSX",
+      "C. {for(condition){<Component />}}",
+      "D. <Component /> always renders, no matter what"
+    ],
+    "correctAnswer": "A",
+    "number": "113"
+  },
+  {
+    "question": "What is a good use case for using the ternary operator in React JSX?",
+    "possibleAnswers": [
+      "A. To choose between two components or values based on a condition",
+      "B. To iterate over arrays",
+      "C. To declare state variables",
+      "D. To attach event listeners"
+    ],
+    "correctAnswer": "A",
+    "number": "114"
+  },
+  {
+    "question": "Which approach is recommended when you need more complex conditional logic in rendering?",
+    "possibleAnswers": [
+      "A. Extract logic to a separate function and call it inside JSX",
+      "B. Write long if statements directly in JSX",
+      "C. Use while loops inside JSX",
+      "D. Avoid conditional rendering entirely"
+    ],
+    "correctAnswer": "A",
+    "number": "115"
+  },
+  {
+    "question": "How can you render one of many components based on a variable’s value?",
+    "possibleAnswers": [
+      "A. Use a switch statement inside a function that returns the chosen component",
+      "B. Use multiple ternary operators inside JSX without functions",
+      "C. Use for loops inside JSX",
+      "D. Render all components and hide some with CSS"
+    ],
+    "correctAnswer": "A",
+    "number": "116"
+  },
+  {
+    "question": "What happens if the condition in a && expression evaluates to false?",
+    "possibleAnswers": [
+      "A. React will render null and nothing appears",
+      "B. React throws an error",
+      "C. The component still renders",
+      "D. React renders an empty div"
+    ],
+    "correctAnswer": "A",
+    "number": "117"
+  },
+  {
+    "question": "Which of these is a valid pattern for rendering different components based on state?",
+    "possibleAnswers": [
+      "A. {isLoggedIn ? <Dashboard /> : <Login />}",
+      "B. if (isLoggedIn) <Dashboard /> else <Login /> inside JSX",
+      "C. while(isLoggedIn) <Dashboard />",
+      "D. <Dashboard />; <Login />;"
+    ],
+    "correctAnswer": "A",
+    "number": "118"
+  },
+  {
+    "question": "Why is extracting conditional rendering logic to a function beneficial?",
+    "possibleAnswers": [
+      "A. It keeps JSX clean and easier to read",
+      "B. It prevents rendering entirely",
+      "C. It automatically optimizes the component",
+      "D. It allows the use of CSS selectors"
+    ],
+    "correctAnswer": "A",
+    "number": "119"
+  },
+  {
+    "question": "What is the difference between using if statements and the ternary operator in JSX?",
+    "possibleAnswers": [
+      "A. If statements cannot be used directly in JSX, while ternary operators can",
+      "B. Ternary operators cannot return JSX elements",
+      "C. If statements are the only correct method",
+      "D. Ternary operators slow down rendering"
+    ],
+    "correctAnswer": "A",
+    "number": "120"
+  },
+  {
+    "question": "What is JSX?",
+    "possibleAnswers": [
+      "A. A server-side language similar to HTML",
+      "B. A language that is a superset of modern JavaScript",
+      "C. A syntax extension for JavaScript",
+      "D. A command-line interface to generate, serve, compile, test, and build React code"
+    ],
+    "correctAnswer": "C",
+    "number": "121"
+  },
+  {
+    "question": "Which of these correctly uses JavaScript expressions in JSX?",
+    "possibleAnswers": [
+      "A. <div>Current score: \"${calculateScore()}\"</div>",
+      "B. <div>Current score: calculateScore()</div>",
+      "C. <div>Current score: {calculateScore()}</div>",
+      "D. <div>Current score: {{calculateScore()}}</div>"
+    ],
+    "correctAnswer": "C",
+    "number": "122"
+  },
+  {
+    "question": "When rendering lists, why is it important to include a key prop?",
+    "possibleAnswers": [
+      "A. To help React identify which items change between re-renders",
+      "B. To determine the order of elements in the list",
+      "C. To bind event handlers to list elements",
+      "D. To specify the CSS styles for each list item"
+    ],
+    "correctAnswer": "A",
+    "number": "123"
+  },
+  {
+    "question": "Which approach is a valid way to conditionally render content in JSX?",
+    "possibleAnswers": [
+      "A. Conditional rendering is not possible in JSX, all elements must always be rendered",
+      "B. Using CSS display property only: <div style={{display: condition ? 'block' : 'none'}}>Content</div>",
+      "C. Using logical && operator: {condition && <div>Content</div>}",
+      "D. Using React.showIf(condition, <Component/>)"
+    ],
+    "correctAnswer": "C",
+    "number": "124"
+  },
+  {
+    "question": "What is a React component?",
+    "possibleAnswers": [
+      "A. A function or class that returns JSX",
+      "B. A special HTML element",
+      "C. A JavaScript variable that stores a DOM element",
+      "D. A CSS module"
+    ],
+    "correctAnswer": "A",
+    "number": "125"
+  },
+  {
+    "question": "Which syntax correctly defines a functional React component?",
+    "possibleAnswers": [
+      "A. function MyComponent() { return <div>Hello</div>; }",
+      "B. const MyComponent = <div>Hello</div>;",
+      "C. function MyComponent() { console.log('Hello'); }",
+      "D. class MyComponent extends Component { render() {} }"
+    ],
+    "correctAnswer": "A",
+    "number": "126"
+  },
+  {
+    "question": "How do you use a component inside another component?",
+    "possibleAnswers": [
+      "A. <MyComponent />",
+      "B. MyComponent()",
+      "C. import MyComponent from './MyComponent';",
+      "D. render(MyComponent)"
+    ],
+    "correctAnswer": "A",
+    "number": "127"
+  },
+  {
+    "question": "Why should component names start with a capital letter?",
+    "possibleAnswers": [
+      "A. React treats lowercase tags as built-in HTML elements",
+      "B. It’s a JavaScript requirement",
+      "C. It improves performance",
+      "D. It’s required for JSX to compile"
+    ],
+    "correctAnswer": "A",
+    "number": "128"
+  },
+  {
+    "question": "Which of the following is true about functional components?",
+    "possibleAnswers": [
+      "A. They cannot use props",
+      "B. They can manage state using hooks",
+      "C. They must be converted to class components to return JSX",
+      "D. They are not reusable"
+    ],
+    "correctAnswer": "B",
+    "number": "129"
+  },
+  {
+    "question": "What is the purpose of export in React?",
+    "possibleAnswers": [
+      "A. To make a component available for use in other files",
+      "B. To hide a component from other files",
+      "C. To render a component in the DOM",
+      "D. To define component state"
+    ],
+    "correctAnswer": "A",
+    "number": "130"
+  },
+  {
+    "question": "Which syntax correctly exports a component as the default export?",
+    "possibleAnswers": [
+      "A. export default MyComponent;",
+      "B. export MyComponent;",
+      "C. module.exports = MyComponent;",
+      "D. import MyComponent from './MyComponent';"
+    ],
+    "correctAnswer": "A",
+    "number": "131"
+  },
+  {
+    "question": "Which syntax correctly imports a default export from another file?",
+    "possibleAnswers": [
+      "A. import MyComponent from './MyComponent';",
+      "B. import { MyComponent } from './MyComponent';",
+      "C. require('./MyComponent');",
+      "D. import * as MyComponent from './MyComponent';"
+    ],
+    "correctAnswer": "A",
+    "number": "132"
+  },
+  {
+    "question": "How do you export multiple components from a single file?",
+    "possibleAnswers": [
+      "A. export { ComponentA, ComponentB };",
+      "B. export default ComponentA, ComponentB;",
+      "C. export ComponentA; export ComponentB;",
+      "D. Only one component can be exported per file"
+    ],
+    "correctAnswer": "A",
+    "number": "133"
+  },
+  {
+    "question": "Which syntax correctly imports multiple named exports from a file?",
+    "possibleAnswers": [
+      "A. import { ComponentA, ComponentB } from './MyComponents';",
+      "B. import ComponentA, ComponentB from './MyComponents';",
+      "C. import * from './MyComponents';",
+      "D. import './MyComponents';"
+    ],
+    "correctAnswer": "A",
+    "number": "134"
+  },
+  {
+    "question": "What are props in React?",
+    "possibleAnswers": [
+      "A. A way to pass data from a parent component to a child component",
+      "B. Internal state of a component",
+      "C. Methods for directly modifying the DOM",
+      "D. A way to store CSS styles"
+    ],
+    "correctAnswer": "A",
+    "number": "135"
+  },
+  {
+    "question": "How do you pass a prop called 'title' with value 'Hello' to a component?",
+    "possibleAnswers": [
+      "A. <MyComponent title='Hello' />",
+      "B. <MyComponent props={{title: 'Hello'}} />",
+      "C. <MyComponent setTitle='Hello' />",
+      "D. <MyComponent>{title='Hello'}</MyComponent>"
+    ],
+    "correctAnswer": "A",
+    "number": "136"
+  },
+  {
+    "question": "How do you access a prop inside a functional component?",
+    "possibleAnswers": [
+      "A. By using the function parameter: function MyComponent(props) { ... }",
+      "B. Using this.props in functional components",
+      "C. Props cannot be accessed inside functional components",
+      "D. By using state hooks"
+    ],
+    "correctAnswer": "A",
+    "number": "137"
+  },
+  {
+    "question": "What happens if a required prop is not passed to a component?",
+    "possibleAnswers": [
+      "A. It will be undefined unless a default value is set",
+      "B. The app will crash immediately",
+      "C. The component automatically generates a placeholder value",
+      "D. React will throw a compile-time error"
+    ],
+    "correctAnswer": "A",
+    "number": "138"
+  },
+  {
+    "question": "How can you provide default values for props in a functional component?",
+    "possibleAnswers": [
+      "A. Using default parameters: function MyComponent({ title = 'Default' }) { ... }",
+      "B. Props cannot have default values",
+      "C. Using this.props.default = 'value'",
+      "D. By defining a global variable with the default"
+    ],
+    "correctAnswer": "A",
+    "number": "139"
+  },
+  {
+    "question": "Which of these component declarations does NOT follow React's naming conventions?",
+    "possibleAnswers": [
+      "A. export default function UserDashboard() { return ... }",
+      "B. function PrimaryButton() { return ... }",
+      "C. export const UserProfile = () => { return ... }",
+      "D. const submitForm = () => { return ... }"
+    ],
+    "correctAnswer": "D",
+    "number": "140"
+  },
+  {
+    "question": "Which statement about importing and exporting React components is correct?",
+    "possibleAnswers": [
+      "A. Components can only be imported if they are in the same directory",
+      "B. The export default syntax allows a component to be imported without curly braces",
+      "C. File extensions (.js or .jsx) are optional when importing components",
+      "D. When importing a component, you must always use curly braces like: import { Profile } from './Profile.js'"
+    ],
+    "correctAnswer": "B",
+    "number": "141"
+  },
+  {
+    "question": "How should you pass a title prop to a ProductCard component if the value is stored in a variable called itemName?",
+    "possibleAnswers": [
+      "A. <ProductCard title={itemName} />",
+      "B. <ProductCard props={{ title: itemName }} />",
+      "C. <ProductCard title=\"itemName\" />",
+      "D. <ProductCard [title]=itemName />"
+    ],
+    "correctAnswer": "A",
+    "number": "142"
+  },
+  {
+    "question": "How do you handle user interactions such as clicks in React?",
+    "possibleAnswers": [
+      "A. By using standard HTML attributes like onclick in lowercase",
+      "B. By using special React props such as onClick with camelCase naming",
+      "C. By calling DOM methods directly like element.addEventListener()",
+      "D. By defining event handlers inside the HTML file"
+    ],
+    "correctAnswer": "B",
+    "number": "143"
+  },
+  {
+    "question": "What is the correct syntax for attaching an onClick event handler to a button in React?",
+    "possibleAnswers": [
+      "A. <button onclick=\"handleClick\">Click me</button>",
+      "B. <button onclick={handleClick}>Click me</button>",
+      "C. <button onClick={handleClick}>Click me</button>",
+      "D. <button OnClick='handleClick()'>Click me</button>"
+    ],
+    "correctAnswer": "C",
+    "number": "144"
+  },
+  {
+    "question": "Where should event handler functions typically be defined in a React component?",
+    "possibleAnswers": [
+      "A. Inside the JSX return statement",
+      "B. Outside the component function",
+      "C. Inside the component function, but outside the JSX return",
+      "D. In a separate JSON configuration file"
+    ],
+    "correctAnswer": "C",
+    "number": "145"
+  },
+  {
+    "question": "Why should you pass a function reference (e.g., onClick={handleClick}) instead of calling it directly (e.g., onClick={handleClick()})?",
+    "possibleAnswers": [
+      "A. Because React cannot detect inline functions",
+      "B. Because calling it directly would execute the function immediately instead of when the event occurs",
+      "C. Because JSX does not support parentheses in props",
+      "D. Because event handlers must always be asynchronous"
+    ],
+    "correctAnswer": "B",
+    "number": "146"
+  },
+  {
+    "question": "How can you access the event object in a React event handler?",
+    "possibleAnswers": [
+      "A. It is automatically available as a global variable",
+      "B. You must import it from the React library",
+      "C. By including it as a parameter in the handler function, e.g., function handleClick(event) {}",
+      "D. By using window.event"
+    ],
+    "correctAnswer": "C",
+    "number": "147"
+  },
+  {
+    "question": "Which statement best describes React’s event system?",
+    "possibleAnswers": [
+      "A. React uses native browser events without modification",
+      "B. React wraps browser events in its own synthetic event system for cross-browser consistency",
+      "C. React prevents all default browser behaviors automatically",
+      "D. React requires manual event binding for every DOM element"
+    ],
+    "correctAnswer": "B",
+    "number": "148"
+  },
+  {
+    "question": "How can you prevent the default behavior of an event in React (for example, stopping a form from submitting)?",
+    "possibleAnswers": [
+      "A. Call event.stop()",
+      "B. Set event.preventDefault = true",
+      "C. Call event.preventDefault() inside the event handler",
+      "D. Use return false at the end of the handler"
+    ],
+    "correctAnswer": "C",
+    "number": "149"
+  },
+  {
+    "question": "What is a React event object?",
+    "possibleAnswers": [
+      "A. A direct reference to the browser’s native event",
+      "B. A wrapper around the native event providing consistent behavior across browsers",
+      "C. A JSON object manually created by React developers",
+      "D. A global variable that stores all events in React"
+    ],
+    "correctAnswer": "B",
+    "number": "150"
+  },
+  {
+    "question": "When you access a React event object, what is the typical parameter name used in an event handler?",
+    "possibleAnswers": [
+      "A. evt",
+      "B. e",
+      "C. event",
+      "D. Any of the above, depending on developer preference"
+    ],
+    "correctAnswer": "D",
+    "number": "151"
+  },
+  {
+    "question": "Which property of the React event object provides access to the underlying browser event?",
+    "possibleAnswers": [
+      "A. nativeEvent",
+      "B. targetEvent",
+      "C. browserEvent",
+      "D. originalEvent"
+    ],
+    "correctAnswer": "A",
+    "number": "152"
+  },
+  {
+    "question": "What happens if you call event.persist() in a React event handler?",
+    "possibleAnswers": [
+      "A. It stops the event from bubbling up",
+      "B. It prevents the default behavior of the event",
+      "C. It removes the event from React’s event pool, keeping it available for asynchronous use",
+      "D. It destroys the event object immediately after execution"
+    ],
+    "correctAnswer": "C",
+    "number": "153"
+  },
+  {
+    "question": "How does React improve performance when handling events?",
+    "possibleAnswers": [
+      "A. By using a centralized event delegation system",
+      "B. By attaching a separate event listener to each element",
+      "C. By caching all event handlers in memory indefinitely",
+      "D. By disabling unused event types"
+    ],
+    "correctAnswer": "A",
+    "number": "154"
+  },
+  {
+    "question": "What property of the React event object gives you the DOM element that triggered the event?",
+    "possibleAnswers": [
+      "A. currentTarget",
+      "B. target",
+      "C. sourceElement",
+      "D. origin"
+    ],
+    "correctAnswer": "B",
+    "number": "155"
+  },
+  {
+    "question": "How can you stop an event from propagating to parent elements in React?",
+    "possibleAnswers": [
+      "A. Call event.stopPropagation()",
+      "B. Call event.cancelBubble()",
+      "C. Return false from the event handler",
+      "D. Set event.propagate = false"
+    ],
+    "correctAnswer": "A",
+    "number": "156"
+  },
+  {
+    "question": "What is the primary purpose of the <input> component in React?",
+    "possibleAnswers": [
+      "A. To display read-only text content",
+      "B. To collect user input through various types like text, checkbox, or radio",
+      "C. To render form labels for accessibility",
+      "D. To act as a wrapper for multiple form elements"
+    ],
+    "correctAnswer": "B",
+    "number": "157"
+  },
+  {
+    "question": "Which prop in a controlled <input> component defines its current value?",
+    "possibleAnswers": [
+      "A. defaultValue",
+      "B. currentValue",
+      "C. value",
+      "D. inputValue"
+    ],
+    "correctAnswer": "C",
+    "number": "158"
+  },
+  {
+    "question": "What is the main difference between value and defaultValue props in React’s <input>?",
+    "possibleAnswers": [
+      "A. value sets the initial value while defaultValue updates on each keystroke",
+      "B. defaultValue sets the initial value, while value makes the input controlled by React state",
+      "C. They are interchangeable and behave the same way",
+      "D. value only works for numeric inputs"
+    ],
+    "correctAnswer": "B",
+    "number": "159"
+  },
+  {
+    "question": "Which React event handler is commonly used to detect changes in a text input?",
+    "possibleAnswers": [
+      "A. onInputChange",
+      "B. onValueUpdate",
+      "C. onChange",
+      "D. onKeyPress"
+    ],
+    "correctAnswer": "C",
+    "number": "160"
+  },
+  {
+    "question": "In React, how do you make an input field read-only?",
+    "possibleAnswers": [
+      "A. Set editable={false}",
+      "B. Set readOnly={true}",
+      "C. Disable the onChange handler",
+      "D. Use the disableInput prop"
+    ],
+    "correctAnswer": "B",
+    "number": "161"
+  },
+  {
+    "question": "What is the purpose of the checked prop in an <input> element of type='checkbox'?",
+    "possibleAnswers": [
+      "A. It specifies whether the checkbox is checked or not",
+      "B. It defines the color of the checkbox",
+      "C. It indicates the checkbox label text",
+      "D. It triggers the onChange event when true"
+    ],
+    "correctAnswer": "A",
+    "number": "162"
+  },
+  {
+    "question": "Which statement correctly describes how to control a checkbox in React?",
+    "possibleAnswers": [
+      "A. Use value={true} to control it",
+      "B. Use checked and onChange props to manage its state",
+      "C. Use selected instead of checked",
+      "D. Checkboxes cannot be controlled in React"
+    ],
+    "correctAnswer": "B",
+    "number": "163"
+  },
+  {
+    "question": "If you need an input that updates only after the user leaves the field, which prop should you rely on?",
+    "possibleAnswers": ["A. onFocus", "B. onInput", "C. onBlur", "D. onChange"],
+    "correctAnswer": "C",
+    "number": "164"
+  },
+  {
+    "question": "How can you make a disabled input field in React?",
+    "possibleAnswers": [
+      "A. disabled={true}",
+      "B. readonly={true}",
+      "C. lock={true}",
+      "D. inactive={true}"
+    ],
+    "correctAnswer": "A",
+    "number": "165"
+  },
+  {
+    "question": "When using <input type='number'>, what happens if you pass a non-numeric string to the value prop?",
+    "possibleAnswers": [
+      "A. React throws an error",
+      "B. The field remains blank",
+      "C. The value is coerced to 0",
+      "D. The browser automatically converts it to a string"
+    ],
+    "correctAnswer": "B",
+    "number": "166"
+  },
+  {
+    "question": "What is the main purpose of the <select> element in React?",
+    "possibleAnswers": [
+      "A. To allow users to select one or more options from a dropdown list",
+      "B. To create a group of checkboxes",
+      "C. To render a list of buttons for user interaction",
+      "D. To dynamically generate HTML tables"
+    ],
+    "correctAnswer": "A",
+    "number": "167"
+  },
+  {
+    "question": "Which prop should you use to make a <select> element controlled in React?",
+    "possibleAnswers": [
+      "A. selectedValue",
+      "B. choice",
+      "C. value",
+      "D. defaultValue"
+    ],
+    "correctAnswer": "C",
+    "number": "168"
+  },
+  {
+    "question": "What is the difference between value and defaultValue in a React <select> element?",
+    "possibleAnswers": [
+      "A. value sets the default choice, while defaultValue updates dynamically",
+      "B. defaultValue sets the initial selected option, while value makes the <select> controlled by state",
+      "C. They have identical behavior in React",
+      "D. defaultValue only works for multiple selections"
+    ],
+    "correctAnswer": "B",
+    "number": "169"
+  },
+  {
+    "question": "How do you enable selecting multiple options in a React <select> element?",
+    "possibleAnswers": [
+      "A. Add multiple={true} to the <select> element",
+      "B. Use multiSelect={true}",
+      "C. Set type='multiple'",
+      "D. Add multipleOptions prop"
+    ],
+    "correctAnswer": "A",
+    "number": "170"
+  },
+  {
+    "question": "When using multiple={true}, what should the value prop contain?",
+    "possibleAnswers": [
+      "A. A string representing the selected option",
+      "B. A number representing the index of the selected option",
+      "C. An array of selected option values",
+      "D. A boolean indicating whether multiple options are selected"
+    ],
+    "correctAnswer": "C",
+    "number": "171"
+  },
+  {
+    "question": "Which event handler is commonly used to detect user selection changes in a <select> element?",
+    "possibleAnswers": [
+      "A. onSelect",
+      "B. onInput",
+      "C. onChange",
+      "D. onClick"
+    ],
+    "correctAnswer": "C",
+    "number": "172"
+  },
+  {
+    "question": "In React, how can you set the initially selected option in an uncontrolled <select> element?",
+    "possibleAnswers": [
+      "A. By setting the value prop directly",
+      "B. By setting the defaultValue prop",
+      "C. By adding selected attribute to <option>",
+      "D. Both B and C"
+    ],
+    "correctAnswer": "D",
+    "number": "173"
+  },
+  {
+    "question": "How can you disable the entire <select> element in React?",
+    "possibleAnswers": [
+      "A. disabled={true}",
+      "B. readOnly={true}",
+      "C. lock={true}",
+      "D. inactive={true}"
+    ],
+    "correctAnswer": "A",
+    "number": "174"
+  },
+  {
+    "question": "If a <select> component has value='apple' but none of its <option> elements have value='apple', what happens?",
+    "possibleAnswers": [
+      "A. React throws an error",
+      "B. The first <option> becomes selected automatically",
+      "C. No option will be selected",
+      "D. The browser selects a random option"
+    ],
+    "correctAnswer": "C",
+    "number": "175"
+  },
+  {
+    "question": "Which statement is true about controlled <select> elements in React?",
+    "possibleAnswers": [
+      "A. Their selected value is managed by the DOM",
+      "B. Their selected value is determined by React state via the value prop",
+      "C. They cannot have multiple selections",
+      "D. They must always include defaultValue"
+    ],
+    "correctAnswer": "B",
+    "number": "176"
+  },
+  {
+    "question": "What is a controlled component in React?",
+    "possibleAnswers": [
+      "A. A component whose form data is handled by the DOM",
+      "B. A component that manages its own internal state only",
+      "C. A component whose form data is managed by React state via props",
+      "D. A component that cannot accept user input"
+    ],
+    "correctAnswer": "C",
+    "number": "177"
+  },
+  {
+    "question": "Which of the following describes an uncontrolled component?",
+    "possibleAnswers": [
+      "A. Its value is set and updated through React state",
+      "B. It uses the DOM to handle its own data internally with refs",
+      "C. It synchronizes user input with component state on every change",
+      "D. It can only be used with Redux for state management"
+    ],
+    "correctAnswer": "B",
+    "number": "178"
+  },
+  {
+    "question": "What is one advantage of using controlled components?",
+    "possibleAnswers": [
+      "A. They require less code than uncontrolled components",
+      "B. They simplify syncing form inputs with application state",
+      "C. They automatically handle form validation",
+      "D. They are faster because they avoid re-renders"
+    ],
+    "correctAnswer": "B",
+    "number": "179"
+  },
+  {
+    "question": "How does React typically handle user input in controlled components?",
+    "possibleAnswers": [
+      "A. Through direct DOM manipulation",
+      "B. By using state variables and event handlers like onChange",
+      "C. By attaching refs to the input elements",
+      "D. By calling document.getElementById() to update values"
+    ],
+    "correctAnswer": "B",
+    "number": "180"
+  },
+  {
+    "question": "What is a common use case for uncontrolled components?",
+    "possibleAnswers": [
+      "A. When you need fine-grained control over every state update",
+      "B. When integrating React with non-React code or libraries",
+      "C. When all input values must be stored in Redux",
+      "D. When creating large-scale enterprise forms"
+    ],
+    "correctAnswer": "B",
+    "number": "181"
+  },
+  {
+    "question": "How can you access the current value of an uncontrolled input in React?",
+    "possibleAnswers": [
+      "A. By using a state variable bound to its value",
+      "B. By calling a custom hook",
+      "C. By using a ref to access the DOM element’s value",
+      "D. By listening to the onUpdate event"
+    ],
+    "correctAnswer": "C",
+    "number": "182"
+  },
+  {
+    "question": "Which prop is typically used in a controlled input element?",
+    "possibleAnswers": ["A. ref", "B. data-value", "C. value", "D. bind"],
+    "correctAnswer": "C",
+    "number": "183"
+  },
+  {
+    "question": "What happens if both defaultValue and value are provided to a controlled input?",
+    "possibleAnswers": [
+      "A. The defaultValue takes priority",
+      "B. React throws an error",
+      "C. The value prop takes precedence, making it controlled",
+      "D. The input becomes uncontrolled"
+    ],
+    "correctAnswer": "C",
+    "number": "184"
+  },
+  {
+    "question": "What is the main difference between controlled and uncontrolled components?",
+    "possibleAnswers": [
+      "A. Controlled components rely on props and state, while uncontrolled rely on the DOM",
+      "B. Uncontrolled components can’t handle user input",
+      "C. Controlled components are faster to render",
+      "D. There is no significant difference between them"
+    ],
+    "correctAnswer": "A",
+    "number": "185"
+  },
+  {
+    "question": "When sharing state between components, why might controlled components be preferred?",
+    "possibleAnswers": [
+      "A. They allow parent components to manage and synchronize state across children",
+      "B. They reduce code complexity in large forms",
+      "C. They automatically track changes using the browser cache",
+      "D. They eliminate the need for lifting state up"
+    ],
+    "correctAnswer": "A",
+    "number": "186"
+  },
+  {
+    "question": "What is the correct syntax to call the handleClick function when clicking a button?",
+    "possibleAnswers": [
+      "A. <button onClick={handleClick}>Click</button>",
+      "B. <button (click)={handleClick}>Click</button>",
+      "C. <button onClick={handleClick()}>Click</button>",
+      "D. <button click={handleClick()}>Click</button>"
+    ],
+    "correctAnswer": "A",
+    "number": "187"
+  },
+  {
+    "question": "Which statement about form handling is correct?",
+    "possibleAnswers": [
+      "A. All form inputs must be implemented as controlled components",
+      "B. Uncontrolled components cannot access form data on submission",
+      "C. In controlled components, form data is handled by React state, while in uncontrolled components, form data is handled by the DOM itself",
+      "D. The FormData API can only be used with controlled components"
+    ],
+    "correctAnswer": "C",
+    "number": "188"
+  },
+  {
+    "question": "What is the primary purpose of React component state?",
+    "possibleAnswers": [
+      "A. To store data that affects rendering and can change over time",
+      "B. To define the CSS styles of a component",
+      "C. To replace props entirely",
+      "D. To store global application data"
+    ],
+    "correctAnswer": "A",
+    "number": "188"
+  },
+  {
+    "question": "Which React hook is used to add state to functional components?",
+    "possibleAnswers": [
+      "A. useEffect",
+      "B. useState",
+      "C. useReducer",
+      "D. useContext"
+    ],
+    "correctAnswer": "B",
+    "number": "189"
+  },
+  {
+    "question": "What is the correct way to update state in a React functional component?",
+    "possibleAnswers": [
+      "A. Directly assign a new value to the state variable",
+      "B. Call the state setter function provided by useState",
+      "C. Mutate the state object with Object.assign",
+      "D. Update state only inside JSX"
+    ],
+    "correctAnswer": "B",
+    "number": "190"
+  },
+  {
+    "question": "Why should state updates in React be treated as immutable?",
+    "possibleAnswers": [
+      "A. To allow React to detect changes and re-render components correctly",
+      "B. To reduce the size of the component",
+      "C. To prevent using hooks in the component",
+      "D. To avoid writing JSX"
+    ],
+    "correctAnswer": "A",
+    "number": "191"
+  },
+  {
+    "question": "Which of the following is true about initial state in useState?",
+    "possibleAnswers": [
+      "A. It can only be a primitive value",
+      "B. It can be a primitive, object, array, or result of a function",
+      "C. It must always be an empty object",
+      "D. It must be calculated inside useEffect"
+    ],
+    "correctAnswer": "B",
+    "number": "192"
+  },
+  {
+    "question": "What does the useState hook return in a React functional component?",
+    "possibleAnswers": [
+      "A. A single state value",
+      "B. An array containing the state value and a function to update it",
+      "C. A function that renders the component",
+      "D. A reference to the DOM node"
+    ],
+    "correctAnswer": "B",
+    "number": "193"
+  },
+  {
+    "question": "Which is the correct way to declare a state variable using useState?",
+    "possibleAnswers": [
+      "A. const state = useState(0);",
+      "B. const [count, setCount] = useState(0);",
+      "C. const count = 0;",
+      "D. useState(count, setCount);"
+    ],
+    "correctAnswer": "B",
+    "number": "194"
+  },
+  {
+    "question": "How do you update a state value based on its previous value?",
+    "possibleAnswers": [
+      "A. setCount(count + 1);",
+      "B. setCount(prevCount => prevCount + 1);",
+      "C. count = count + 1;",
+      "D. setCount(prevCount + 1);"
+    ],
+    "correctAnswer": "B",
+    "number": "195"
+  },
+  {
+    "question": "What happens when you call the state setter function returned by useState?",
+    "possibleAnswers": [
+      "A. The component re-renders with the new state value",
+      "B. The state is updated but the component does not re-render",
+      "C. It triggers a new hook",
+      "D. Nothing until useEffect is called"
+    ],
+    "correctAnswer": "A",
+    "number": "196"
+  },
+  {
+    "question": "Can the initial state in useState be a function?",
+    "possibleAnswers": [
+      "A. No, it must be a primitive value",
+      "B. Yes, the function will be executed only once to set the initial state",
+      "C. Yes, but it executes on every render",
+      "D. Only if the state is an object"
+    ],
+    "correctAnswer": "B",
+    "number": "197"
+  },
+  {
+    "question": "What are the two main phases of React’s rendering process?",
+    "possibleAnswers": [
+      "A. Render phase and Commit phase",
+      "B. Initialization phase and Cleanup phase",
+      "C. Layout phase and Paint phase",
+      "D. State phase and Props phase"
+    ],
+    "correctAnswer": "A",
+    "number": "198"
+  },
+  {
+    "question": "What happens during the Render phase in React?",
+    "possibleAnswers": [
+      "A. React updates the DOM immediately",
+      "B. React calculates what changes are needed and prepares them",
+      "C. React cleans up previous components",
+      "D. React executes browser repaint operations"
+    ],
+    "correctAnswer": "B",
+    "number": "199"
+  },
+  {
+    "question": "During which phase does React make changes visible to the user?",
+    "possibleAnswers": [
+      "A. Render phase",
+      "B. Commit phase",
+      "C. Initialization phase",
+      "D. Cleanup phase"
+    ],
+    "correctAnswer": "B",
+    "number": "200"
+  },
+  {
+    "question": "Can the Render phase in React be interrupted or paused?",
+    "possibleAnswers": [
+      "A. No, it always runs to completion",
+      "B. Yes, it can be interrupted and resumed later",
+      "C. Only for class components",
+      "D. Only if React.StrictMode is not enabled"
+    ],
+    "correctAnswer": "B",
+    "number": "201"
+  },
+  {
+    "question": "Which of the following is true about side effects in React?",
+    "possibleAnswers": [
+      "A. They should be performed during the Render phase",
+      "B. They should be performed during the Commit phase or in useEffect",
+      "C. They should never occur in functional components",
+      "D. They automatically occur when state changes"
+    ],
+    "correctAnswer": "B",
+    "number": "202"
+  },
+  {
+    "question": "What does it mean that state in React is a snapshot?",
+    "possibleAnswers": [
+      "A. State represents the current value at a specific moment in time",
+      "B. State is always the same across all renders",
+      "C. State automatically updates the DOM without rendering",
+      "D. State can only be read but not updated"
+    ],
+    "correctAnswer": "A",
+    "number": "203"
+  },
+  {
+    "question": "Why is state considered immutable during a render?",
+    "possibleAnswers": [
+      "A. Because React allows direct mutation of state",
+      "B. Because state cannot change while React is calculating the render",
+      "C. Because state can only be mutated in class components",
+      "D. Because state is always derived from props"
+    ],
+    "correctAnswer": "B",
+    "number": "204"
+  },
+  {
+    "question": "What happens if you try to read state after scheduling an update in the same render?",
+    "possibleAnswers": [
+      "A. You will get the new state immediately",
+      "B. You will get the previous state snapshot",
+      "C. React will throw an error",
+      "D. State becomes undefined"
+    ],
+    "correctAnswer": "B",
+    "number": "205"
+  },
+  {
+    "question": "Which hook provides access to the most recent state in functional components?",
+    "possibleAnswers": [
+      "A. useEffect",
+      "B. useRef",
+      "C. useState",
+      "D. useMemo"
+    ],
+    "correctAnswer": "C",
+    "number": "206"
+  },
+  {
+    "question": "Why is it important to treat state updates as creating a new snapshot?",
+    "possibleAnswers": [
+      "A. To ensure React can properly track changes and schedule re-renders",
+      "B. To make state updates synchronous",
+      "C. To allow direct DOM manipulation",
+      "D. To prevent using hooks in functional components"
+    ],
+    "correctAnswer": "A",
+    "number": "207"
+  },
+  {
+    "question": "What happens when multiple state updates are queued in React within the same render?",
+    "possibleAnswers": [
+      "A. Each update is applied immediately to the DOM",
+      "B. Updates are batched and applied together before the next render",
+      "C. Only the first update is applied",
+      "D. Updates are ignored"
+    ],
+    "correctAnswer": "B",
+    "number": "208"
+  },
+  {
+    "question": "Why does React batch state updates in functional components?",
+    "possibleAnswers": [
+      "A. To improve performance by reducing unnecessary renders",
+      "B. To allow direct DOM access",
+      "C. To prevent state from being updated",
+      "D. To enforce class component usage"
+    ],
+    "correctAnswer": "A",
+    "number": "209"
+  },
+  {
+    "question": "When calling setState multiple times in a row, what will be the value inside the updater function?",
+    "possibleAnswers": [
+      "A. The value from the first setState call only",
+      "B. The latest state value at the time of that update",
+      "C. Undefined",
+      "D. The previous render’s props"
+    ],
+    "correctAnswer": "B",
+    "number": "210"
+  },
+  {
+    "question": "How can you ensure that each state update depends on the previous one correctly?",
+    "possibleAnswers": [
+      "A. By using setState with a function that receives the previous state",
+      "B. By calling setState multiple times without arguments",
+      "C. By reading state directly from the DOM",
+      "D. By using global variables instead of state"
+    ],
+    "correctAnswer": "A",
+    "number": "211"
+  },
+  {
+    "question": "What is a common mistake when updating state multiple times in a row?",
+    "possibleAnswers": [
+      "A. Using a function updater with previous state",
+      "B. Assuming that state updates are synchronous and immediately reflect in the next line",
+      "C. Using useState hook in functional components",
+      "D. Passing an object instead of a function to setState"
+    ],
+    "correctAnswer": "B",
+    "number": "212"
+  },
+  {
+    "question": "What is the recommended way to update a property of an object stored in React state?",
+    "possibleAnswers": [
+      "A. Mutate the object directly and call setState with the same object",
+      "B. Create a new object using spread syntax and update the property",
+      "C. Assign the new value to the state variable directly",
+      "D. Use document.getElementById to update the state"
+    ],
+    "correctAnswer": "B",
+    "number": "213"
+  },
+  {
+    "question": "Why should you avoid directly mutating objects in React state?",
+    "possibleAnswers": [
+      "A. It can cause unnecessary re-renders",
+      "B. React may not detect the change, preventing updates",
+      "C. It can lead to bugs and unpredictable behavior",
+      "D. All of the above"
+    ],
+    "correctAnswer": "D",
+    "number": "214"
+  },
+  {
+    "question": "Which syntax is commonly used to update nested properties in state objects?",
+    "possibleAnswers": [
+      "A. Object.assign or spread operator {...object, property: newValue}",
+      "B. Direct assignment object.property = newValue",
+      "C. JSON.parse(JSON.stringify(object))",
+      "D. Using document.querySelector to modify the DOM"
+    ],
+    "correctAnswer": "A",
+    "number": "215"
+  },
+  {
+    "question": "When updating an object in state using the previous state, which pattern is recommended?",
+    "possibleAnswers": [
+      "A. setState(prev => ({ ...prev, property: newValue }))",
+      "B. setState({ ...state, property: newValue }) without function",
+      "C. Mutate state directly",
+      "D. setState(newValue)"
+    ],
+    "correctAnswer": "A",
+    "number": "216"
+  },
+  {
+    "question": "What is the primary benefit of using a new object when updating state?",
+    "possibleAnswers": [
+      "A. It preserves immutability and ensures React recognizes the change",
+      "B. It reduces memory usage",
+      "C. It allows direct DOM manipulation",
+      "D. It avoids using useState altogether"
+    ],
+    "correctAnswer": "A",
+    "number": "217"
+  },
+  {
+    "question": "What is the recommended way to add an item to an array in React state?",
+    "possibleAnswers": [
+      "A. Use array.push() directly on the state array",
+      "B. Create a new array using spread syntax and add the item",
+      "C. Reassign the state variable directly",
+      "D. Use document.getElementById to modify the array"
+    ],
+    "correctAnswer": "B",
+    "number": "218"
+  },
+  {
+    "question": "Why should you avoid mutating arrays directly in React state?",
+    "possibleAnswers": [
+      "A. React may not detect the change and the component may not re-render",
+      "B. It can cause bugs and unpredictable behavior",
+      "C. It violates immutability principles",
+      "D. All of the above"
+    ],
+    "correctAnswer": "D",
+    "number": "219"
+  },
+  {
+    "question": "Which method is suitable for removing an item from an array in state?",
+    "possibleAnswers": [
+      "A. Use array.pop() directly on state",
+      "B. Use filter to create a new array excluding the item",
+      "C. Use splice() directly on the state array",
+      "D. Use document.querySelector to remove elements"
+    ],
+    "correctAnswer": "B",
+    "number": "220"
+  },
+  {
+    "question": "How do you update a specific item in an array stored in React state?",
+    "possibleAnswers": [
+      "A. Directly assign the new value to the array element",
+      "B. Map over the array to return a new array with the updated item",
+      "C. Use array.push() to add the updated item",
+      "D. Replace the entire array with an empty array first"
+    ],
+    "correctAnswer": "B",
+    "number": "221"
+  },
+  {
+    "question": "When updating arrays in state using the previous state, what is the recommended approach?",
+    "possibleAnswers": [
+      "A. setState(prev => [...prev, newItem])",
+      "B. setState([...state, newItem]) without function",
+      "C. Directly mutate state using push()",
+      "D. Assign state = newItem"
+    ],
+    "correctAnswer": "A",
+    "number": "222"
+  },
+  {
+    "question": "Given the following state, what is the correct syntax to update it to {score: 100}?",
+    "possibleAnswers": [
+      "A. setScore(\"100\")",
+      "B. score = {score: 100}",
+      "C. score.score = 100",
+      "D. setScore({score: 100})"
+    ],
+    "correctAnswer": "D",
+    "number": "223"
+  },
+  {
+    "question": "What happens during the 'Commit' phase in React's update cycle?",
+    "possibleAnswers": [
+      "A. React compares the new virtual DOM with the previous one (diffing)",
+      "B. React applies the minimal necessary DOM updates",
+      "C. React re-runs component functions to validate state changes",
+      "D. React calls the useState Hook to update component state"
+    ],
+    "correctAnswer": "B",
+    "number": "224"
+  },
+  {
+    "question": "When state is described as a 'snapshot', what does this mean?",
+    "possibleAnswers": [
+      "A. Each render has its own isolated version of state that doesn't change",
+      "B. React creates a complete copy of the DOM whenever state changes",
+      "C. State values are automatically saved to local storage between sessions",
+      "D. State values are temporarily frozen until the next useEffect call"
+    ],
+    "correctAnswer": "A",
+    "number": "225"
+  },
+  {
+    "question": "When you need to update state based on its previous value, what's the recommended approach?",
+    "possibleAnswers": [
+      "A. Use the updater function syntax (e.g., setCount(prevCount => prevCount + 1))",
+      "B. Create multiple state variables instead of updating one state multiple times",
+      "C. Use the async/await syntax with state setters",
+      "D. Directly modify the state variable and then call the setter function"
+    ],
+    "correctAnswer": "A",
+    "number": "226"
+  },
+  {
+    "question": "Considering the following state: const [data, setData] = useState({ products: [], messages: ['Welcome'] }); What is the value of that state after running setData({ products: ['Product 1'] })?",
+    "possibleAnswers": [
+      "A. { products: ['Product 1', 'Product 1'], messages: ['Welcome'] }",
+      "B. { products: ['Product 1'], messages: ['Welcome'] }",
+      "C. { products: ['Product 1'], messages: [] }",
+      "D. { products: ['Product 1'] }"
+    ],
+    "correctAnswer": "B",
+    "number": "227"
+  },
+  {
+    "question": "You're building a color list. Given the following code: const [colors, setColors] = useState(['red', 'blue']); Which implementation correctly adds 'green' to the array?",
+    "possibleAnswers": [
+      "A. colors.push('green'); setColors(colors)",
+      "B. colors[2] = 'green'; setColors(colors)",
+      "C. setColors(colors.push('green'))",
+      "D. setColors([...colors, 'green'])"
+    ],
+    "correctAnswer": "D",
+    "number": "228"
+  },
+  {
+    "question": "What is the main purpose of using the useEffect Hook in React?",
+    "possibleAnswers": [
+      "A. To handle user interactions",
+      "B. To perform side effects like fetching data or updating the DOM",
+      "C. To define reusable logic across components",
+      "D. To store local component state"
+    ],
+    "correctAnswer": "B",
+    "number": "229"
+  },
+  {
+    "question": "When does React execute the function passed to useEffect?",
+    "possibleAnswers": [
+      "A. During the rendering phase",
+      "B. After the component has been rendered to the screen",
+      "C. Before state updates occur",
+      "D. Only when the component is unmounted"
+    ],
+    "correctAnswer": "B",
+    "number": "230"
+  },
+  {
+    "question": "What is the effect of providing an empty dependency array ([]) to useEffect?",
+    "possibleAnswers": [
+      "A. The effect runs after every render",
+      "B. The effect never runs",
+      "C. The effect runs only once after the initial render",
+      "D. The effect runs before every state update"
+    ],
+    "correctAnswer": "C",
+    "number": "231"
+  },
+  {
+    "question": "Which of the following examples correctly cleans up an effect when a component unmounts?",
+    "possibleAnswers": [
+      "A. useEffect(() => console.log('mounted'));",
+      "B. useEffect(() => { setInterval(() => {}, 1000); });",
+      "C. useEffect(() => { const id = setTimeout(...); return () => clearTimeout(id); }, []);",
+      "D. useEffect(() => { window.addEventListener('scroll', handler); });"
+    ],
+    "correctAnswer": "C",
+    "number": "232"
+  },
+  {
+    "question": "What happens if you omit a dependency from the useEffect dependency array?",
+    "possibleAnswers": [
+      "A. React will ignore the effect completely",
+      "B. The effect will always run on every render",
+      "C. The effect might use stale values and cause unexpected behavior",
+      "D. React will automatically detect missing dependencies and fix them"
+    ],
+    "correctAnswer": "C",
+    "number": "233"
+  },
+  {
+    "question": "How can you make an effect run again when a specific variable changes?",
+    "possibleAnswers": [
+      "A. By re-rendering the component manually",
+      "B. By including that variable in the useEffect dependency array",
+      "C. By calling useEffect again inside the render",
+      "D. By returning the variable from the effect"
+    ],
+    "correctAnswer": "B",
+    "number": "234"
+  },
+  {
+    "question": "What is the correct way to prevent memory leaks when using subscriptions in useEffect?",
+    "possibleAnswers": [
+      "A. Use multiple useEffect calls for each dependency",
+      "B. Reset state before the component unmounts",
+      "C. Return a cleanup function that unsubscribes from the source",
+      "D. Use setTimeout instead of subscriptions"
+    ],
+    "correctAnswer": "C",
+    "number": "235"
+  },
+  {
+    "question": "What is the primary purpose of the useEffect Hook in React?",
+    "possibleAnswers": [
+      "A. To manage local component state",
+      "B. To perform side effects such as data fetching, subscriptions, or manual DOM manipulation",
+      "C. To define event handlers for user interactions",
+      "D. To optimize component performance with memoization"
+    ],
+    "correctAnswer": "B",
+    "number": "236"
+  },
+  {
+    "question": "When does React clean up the effect created by useEffect?",
+    "possibleAnswers": [
+      "A. Before running the next effect or when the component unmounts",
+      "B. After every render regardless of dependencies",
+      "C. Only when the browser window closes",
+      "D. When manually calling clearEffect()"
+    ],
+    "correctAnswer": "A",
+    "number": "237"
+  },
+  {
+    "question": "What is the correct way to make an effect run only once when the component mounts?",
+    "possibleAnswers": [
+      "A. useEffect(callback, [state])",
+      "B. useEffect(callback, null)",
+      "C. useEffect(callback, [])",
+      "D. useEffect(callback)"
+    ],
+    "correctAnswer": "C",
+    "number": "238"
+  },
+  {
+    "question": "Which of the following best describes how dependencies work in useEffect?",
+    "possibleAnswers": [
+      "A. Dependencies determine when the component re-renders",
+      "B. Dependencies tell React when to re-run the effect based on their value changes",
+      "C. Dependencies are ignored when using asynchronous functions",
+      "D. Dependencies are only needed when using context"
+    ],
+    "correctAnswer": "B",
+    "number": "239"
+  },
+  {
+    "question": "What is the effect of returning a function from the useEffect callback?",
+    "possibleAnswers": [
+      "A. It schedules the returned function to run after every render",
+      "B. It defines a cleanup function that runs before re-running the effect or when the component unmounts",
+      "C. It replaces the current state with a new value",
+      "D. It delays the execution of the effect until all children have rendered"
+    ],
+    "correctAnswer": "B",
+    "number": "240"
+  },
+  {
+    "question": "Why should async functions not be used directly as the argument to useEffect?",
+    "possibleAnswers": [
+      "A. Because useEffect only accepts functions that return nothing or a cleanup function",
+      "B. Because async functions automatically cancel cleanup logic",
+      "C. Because React does not allow asynchronous operations inside components",
+      "D. Because async functions do not support dependency arrays"
+    ],
+    "correctAnswer": "A",
+    "number": "241"
+  },
+  {
+    "question": "What is the correct way to use an async operation inside a useEffect Hook?",
+    "possibleAnswers": [
+      "A. Pass the async function directly to useEffect",
+      "B. Wrap the async call inside a nested function and call it within useEffect",
+      "C. Use async/await directly in the dependency array",
+      "D. Define the async function outside the component and import it"
+    ],
+    "correctAnswer": "B",
+    "number": "242"
+  },
+  {
+    "question": "What should you do if your effect depends on an object or array that changes identity frequently?",
+    "possibleAnswers": [
+      "A. Ignore it in the dependency array",
+      "B. Use useMemo or useCallback to stabilize the reference",
+      "C. Place it outside the component definition",
+      "D. Use multiple useEffect Hooks instead"
+    ],
+    "correctAnswer": "B",
+    "number": "243"
+  },
+  {
+    "question": "If you provide no dependency array to useEffect, when will the effect run?",
+    "possibleAnswers": [
+      "A. Only when the component mounts",
+      "B. On every render of the component",
+      "C. Only when a cleanup function is returned",
+      "D. Never"
+    ],
+    "correctAnswer": "B",
+    "number": "244"
+  },
+  {
+    "question": "What happens if you include a state variable in the useEffect dependency array?",
+    "possibleAnswers": [
+      "A. The effect runs only once on mount",
+      "B. The effect runs whenever that state variable changes",
+      "C. The effect becomes memoized and will not run again",
+      "D. React throws an error"
+    ],
+    "correctAnswer": "B",
+    "number": "245"
+  },
+  {
+    "question": "What is the primary purpose of the useRef Hook in React?",
+    "possibleAnswers": [
+      "A. To persist values between renders without causing re-renders",
+      "B. To store component state that triggers re-renders when updated",
+      "C. To memoize functions for performance optimization",
+      "D. To synchronize component state with the DOM"
+    ],
+    "correctAnswer": "A",
+    "number": "245"
+  },
+  {
+    "question": "What does useRef return when called?",
+    "possibleAnswers": [
+      "A. A function that updates the ref’s value",
+      "B. A mutable object with a .current property",
+      "C. A frozen object containing the initial value",
+      "D. An array similar to useState"
+    ],
+    "correctAnswer": "B",
+    "number": "246"
+  },
+  {
+    "question": "When does updating a ref’s current property cause a component to re-render?",
+    "possibleAnswers": [
+      "A. Every time the ref’s value changes",
+      "B. Only on the next render cycle",
+      "C. Never, ref updates do not trigger re-renders",
+      "D. When the ref is used in JSX"
+    ],
+    "correctAnswer": "C",
+    "number": "247"
+  },
+  {
+    "question": "Which of the following is a correct example of using useRef to store a DOM element reference?",
+    "possibleAnswers": [
+      "A. const inputRef = useRef(); <input ref={inputRef.current} />",
+      "B. const inputRef = useRef(); <input useRef={inputRef} />",
+      "C. const inputRef = useRef(); <input ref={inputRef} />",
+      "D. const inputRef = useRef(<input />);"
+    ],
+    "correctAnswer": "C",
+    "number": "248"
+  },
+  {
+    "question": "Which of the following use cases is appropriate for using useRef?",
+    "possibleAnswers": [
+      "A. Tracking the previous value of a state variable",
+      "B. Storing data that should trigger re-renders when updated",
+      "C. Computing derived state from props",
+      "D. Managing complex object comparisons in useEffect"
+    ],
+    "correctAnswer": "A",
+    "number": "249"
+  },
+  {
+    "question": "How can you access the previous value of a state variable using useRef?",
+    "possibleAnswers": [
+      "A. useEffect(() => { prev.current = state; }, [state])",
+      "B. prev = state;",
+      "C. prevState = useRef(state);",
+      "D. setPrev(state);"
+    ],
+    "correctAnswer": "A",
+    "number": "250"
+  },
+  {
+    "question": "When should you avoid using refs?",
+    "possibleAnswers": [
+      "A. When managing focus or scroll position",
+      "B. When accessing DOM nodes directly",
+      "C. When you can express the same behavior declaratively with state or props",
+      "D. When persisting mutable values across renders"
+    ],
+    "correctAnswer": "C",
+    "number": "251"
+  },
+  {
+    "question": "Which statement best describes the difference between useState and useRef?",
+    "possibleAnswers": [
+      "A. Both persist values across renders and trigger re-renders when updated",
+      "B. useState triggers re-renders, useRef does not",
+      "C. useRef is synchronous, useState is asynchronous",
+      "D. useState can only be used inside useEffect, while useRef cannot"
+    ],
+    "correctAnswer": "B",
+    "number": "252"
+  },
+  {
+    "question": "What happens if you modify a ref’s .current property directly in a render function?",
+    "possibleAnswers": [
+      "A. React throws an error",
+      "B. The component immediately re-renders",
+      "C. The value updates but React ignores it until the next render",
+      "D. The value updates immediately but does not cause a re-render"
+    ],
+    "correctAnswer": "D",
+    "number": "253"
+  },
+  {
+    "question": "How can you programmatically focus an input element using useRef?",
+    "possibleAnswers": [
+      "A. inputRef.current.setFocus()",
+      "B. useEffect(() => inputRef.focus())",
+      "C. inputRef.current.focus()",
+      "D. useRef(inputRef.focus())"
+    ],
+    "correctAnswer": "C",
+    "number": "254"
+  },
+  {
+    "question": "What does the useRef Hook return?",
+    "possibleAnswers": [
+      "A. A mutable ref object with a current property",
+      "B. A stateful variable and an updater function",
+      "C. A function to reference a DOM node",
+      "D. A promise that resolves after rendering"
+    ],
+    "correctAnswer": "A",
+    "number": "254"
+  },
+  {
+    "question": "When the .current property of a ref changes, what happens to the component?",
+    "possibleAnswers": [
+      "A. It triggers a re-render",
+      "B. It resets all state variables",
+      "C. Nothing; React does not re-render when a ref changes",
+      "D. It calls useEffect automatically"
+    ],
+    "correctAnswer": "C",
+    "number": "255"
+  },
+  {
+    "question": "What is a common use case for useRef?",
+    "possibleAnswers": [
+      "A. Storing DOM element references for direct manipulation",
+      "B. Managing global state across components",
+      "C. Triggering data fetching after a component mounts",
+      "D. Preventing memory leaks by cleaning up timers"
+    ],
+    "correctAnswer": "A",
+    "number": "256"
+  },
+  {
+    "question": "Which of the following correctly initializes a ref with a default value?",
+    "possibleAnswers": [
+      "A. const countRef = useRef(0);",
+      "B. const countRef = new useRef(0);",
+      "C. const countRef = useRef.current(0);",
+      "D. const countRef = createRef(0);"
+    ],
+    "correctAnswer": "A",
+    "number": "257"
+  },
+  {
+    "question": "How do refs created with useRef differ from those created with createRef?",
+    "possibleAnswers": [
+      "A. useRef creates a new ref on every render, createRef returns the same ref",
+      "B. useRef persists the same ref across renders, while createRef creates a new one each render",
+      "C. Both behave identically in functional components",
+      "D. createRef should always be used inside useEffect"
+    ],
+    "correctAnswer": "B",
+    "number": "258"
+  },
+  {
+    "question": "Which of the following demonstrates using useRef to focus an input element after mount?",
+    "possibleAnswers": [
+      "A. const ref = useRef(); useEffect(() => ref.focus());",
+      "B. const ref = useRef(); useEffect(() => ref.current.focus(), []);",
+      "C. const ref = useRef(); ref.current.focus();",
+      "D. const ref = useRef(); useRef(() => ref.current.focus(), []);"
+    ],
+    "correctAnswer": "B",
+    "number": "259"
+  },
+  {
+    "question": "How can you store a mutable value across renders without causing re-renders?",
+    "possibleAnswers": [
+      "A. Use useState with a function updater",
+      "B. Use useRef and update the .current property",
+      "C. Use useEffect with an empty dependency array",
+      "D. Use useCallback to memoize the value"
+    ],
+    "correctAnswer": "B",
+    "number": "260"
+  },
+  {
+    "question": "What is the difference between useRef and useState regarding re-renders?",
+    "possibleAnswers": [
+      "A. useRef triggers re-renders, useState does not",
+      "B. Both trigger re-renders when values change",
+      "C. useState triggers re-renders, useRef does not",
+      "D. Neither trigger re-renders when values change"
+    ],
+    "correctAnswer": "C",
+    "number": "261"
+  },
+  {
+    "question": "What is the correct way to read the value stored in a ref?",
+    "possibleAnswers": [
+      "A. ref.value",
+      "B. ref.get()",
+      "C. ref.current",
+      "D. ref.use()"
+    ],
+    "correctAnswer": "C",
+    "number": "262"
+  },
+  {
+    "question": "What type of value can be stored in a ref?",
+    "possibleAnswers": [
+      "A. Only DOM nodes",
+      "B. Only primitive types like numbers or strings",
+      "C. Any mutable value, including objects and functions",
+      "D. Only React components"
+    ],
+    "correctAnswer": "C",
+    "number": "263"
+  },
+  {
+    "question": "What is one of the main reasons to use refs for manipulating the DOM in React?",
+    "possibleAnswers": [
+      "A. To directly change component state",
+      "B. To access and interact with DOM elements outside React’s rendering flow",
+      "C. To trigger React re-renders",
+      "D. To modify component props dynamically"
+    ],
+    "correctAnswer": "B",
+    "number": "264"
+  },
+  {
+    "question": "Which of the following is the correct way to focus an input element using refs?",
+    "possibleAnswers": [
+      "A. const input = useRef(); input.focus();",
+      "B. const input = useRef(); useEffect(() => input.current.focus(), []);",
+      "C. const input = useRef(); input.current = focus();",
+      "D. const input = useRef(); input.current.focus;"
+    ],
+    "correctAnswer": "B",
+    "number": "265"
+  },
+  {
+    "question": "When should you prefer using state over refs?",
+    "possibleAnswers": [
+      "A. When you need to store a value that should not cause re-renders",
+      "B. When you need to trigger UI updates in response to changes",
+      "C. When accessing DOM elements directly",
+      "D. When storing mutable values that persist between renders"
+    ],
+    "correctAnswer": "B",
+    "number": "266"
+  },
+  {
+    "question": "Which React Hook is typically used together with refs to run code after the DOM updates?",
+    "possibleAnswers": [
+      "A. useMemo",
+      "B. useLayoutEffect or useEffect",
+      "C. useCallback",
+      "D. useReducer"
+    ],
+    "correctAnswer": "B",
+    "number": "267"
+  },
+  {
+    "question": "What will happen if you try to read a ref before the component mounts?",
+    "possibleAnswers": [
+      "A. It throws an error because the ref isn’t initialized yet",
+      "B. The ref’s current property will be undefined",
+      "C. React automatically delays the access until mount",
+      "D. The ref will contain a default HTML element"
+    ],
+    "correctAnswer": "B",
+    "number": "268"
+  },
+  {
+    "question": "Why does React recommend avoiding frequent DOM manipulation via refs?",
+    "possibleAnswers": [
+      "A. Because it can conflict with React’s declarative rendering model",
+      "B. Because refs can only be used inside class components",
+      "C. Because React will automatically overwrite DOM changes made by refs",
+      "D. Because refs cannot reference multiple elements"
+    ],
+    "correctAnswer": "A",
+    "number": "269"
+  },
+  {
+    "question": "What is the correct way to assign a ref to a DOM node in JSX?",
+    "possibleAnswers": [
+      "A. <input useRef={myRef} />",
+      "B. <input ref={myRef} />",
+      "C. <input this={myRef} />",
+      "D. <input bindRef={myRef} />"
+    ],
+    "correctAnswer": "B",
+    "number": "270"
+  },
+  {
+    "question": "How can you scroll an element into view using a ref?",
+    "possibleAnswers": [
+      "A. ref.scroll();",
+      "B. ref.current.scrollIntoView();",
+      "C. scroll(ref);",
+      "D. window.scroll(ref.current);"
+    ],
+    "correctAnswer": "B",
+    "number": "271"
+  },
+  {
+    "question": "What does React guarantee about the value of a ref between renders?",
+    "possibleAnswers": [
+      "A. It resets on every render",
+      "B. It persists the same object between renders",
+      "C. It is reinitialized each time the component re-renders",
+      "D. It always points to the latest DOM node, even before commit"
+    ],
+    "correctAnswer": "B",
+    "number": "272"
+  },
+  {
+    "question": "Which approach is recommended when refs are used to control focus or animations?",
+    "possibleAnswers": [
+      "A. Always call ref methods directly in the component body",
+      "B. Call DOM methods like focus() or scrollIntoView() inside useEffect or useLayoutEffect",
+      "C. Use refs only for reading data from the DOM, never for focus control",
+      "D. Update refs synchronously in the render phase"
+    ],
+    "correctAnswer": "B",
+    "number": "273"
+  },
+  {
+    "question": "What is the primary purpose of the useEffect Hook?",
+    "possibleAnswers": [
+      "A. To synchronize components with external systems outside of React's data flow",
+      "B. To improve component rendering performance",
+      "C. To replace class components entirely",
+      "D. To prevent components from re-rendering unnecessarily"
+    ],
+    "correctAnswer": "A",
+    "number": "274"
+  },
+  {
+    "question": "Which statement correctly describes the useRef Hook?",
+    "possibleAnswers": [
+      "A. useRef lets you store values that persist between renders without triggering a re-render when changed",
+      "B. useRef values are lost whenever a component re-renders",
+      "C. useRef is primarily used for form validation in React components",
+      "D. useRef can only be used to access DOM elements, not to store primitive values"
+    ],
+    "correctAnswer": "A",
+    "number": "275"
+  },
+  {
+    "question": "We've created a ref called inputRef. How can we bind it to a DOM element?",
+    "possibleAnswers": [
+      "A. <input type=\"text\" ref=\"inputRef\" />",
+      "B. <input type=\"text\" inputRef={ref} />",
+      "C. <input type=\"text\" ref={inputRef} />",
+      "D. <input type=\"text\" useRef={inputRef} />"
+    ],
+    "correctAnswer": "C",
+    "number": "276"
+  },
+  {
+    "question": "What is the primary purpose of declarative routing in React Router?",
+    "possibleAnswers": [
+      "A. To define navigation structure using JSX components",
+      "B. To manage routing logic with manual event listeners",
+      "C. To create routes dynamically in plain JavaScript",
+      "D. To configure routing outside React’s component tree"
+    ],
+    "correctAnswer": "A",
+    "number": "277"
+  },
+  {
+    "question": "Which component is used to wrap the entire application and enable routing?",
+    "possibleAnswers": [
+      "A. <Routes>",
+      "B. <Router>",
+      "C. <Navigation>",
+      "D. <Outlet>"
+    ],
+    "correctAnswer": "B",
+    "number": "278"
+  },
+  {
+    "question": "What does the <Route> component do in React Router?",
+    "possibleAnswers": [
+      "A. Defines which component should render for a specific URL path",
+      "B. Handles navigation between pages automatically",
+      "C. Declares global middleware for route handling",
+      "D. Acts as a container for static assets"
+    ],
+    "correctAnswer": "A",
+    "number": "279"
+  },
+  {
+    "question": "Which React Router component allows rendering nested routes?",
+    "possibleAnswers": [
+      "A. <Link>",
+      "B. <Outlet>",
+      "C. <NestedRoute>",
+      "D. <SubRoute>"
+    ],
+    "correctAnswer": "B",
+    "number": "280"
+  },
+  {
+    "question": "What is the difference between <Link> and <NavLink> in React Router?",
+    "possibleAnswers": [
+      "A. <NavLink> adds styling to the active link automatically",
+      "B. <Link> can only be used in nested routes",
+      "C. <NavLink> triggers a page reload on click",
+      "D. <Link> manages authentication for routes"
+    ],
+    "correctAnswer": "A",
+    "number": "281"
+  },
+  {
+    "question": "How does React Router determine which <Route> to render?",
+    "possibleAnswers": [
+      "A. It renders all matching routes simultaneously",
+      "B. It checks URL paths in order and renders the first match",
+      "C. It relies on browser history only",
+      "D. It compares route names alphabetically"
+    ],
+    "correctAnswer": "B",
+    "number": "282"
+  },
+  {
+    "question": "What is the primary purpose of the <Link> component in React Router?",
+    "possibleAnswers": [
+      "A. To create anchor tags that trigger full page reloads",
+      "B. To handle client-side navigation without reloading the page",
+      "C. To fetch data from APIs before navigating",
+      "D. To define new routes dynamically at runtime"
+    ],
+    "correctAnswer": "B",
+    "number": "283"
+  },
+  {
+    "question": "Which prop specifies the destination path for a <Link> component?",
+    "possibleAnswers": ["A. href", "B. path", "C. to", "D. route"],
+    "correctAnswer": "C",
+    "number": "284"
+  },
+  {
+    "question": "What happens when the 'replace' prop is set to true in a <Link> component?",
+    "possibleAnswers": [
+      "A. It replaces the current entry in the history stack instead of adding a new one",
+      "B. It disables the link’s default click behavior",
+      "C. It prevents the link from rendering unless conditions are met",
+      "D. It automatically refreshes the document after navigation"
+    ],
+    "correctAnswer": "A",
+    "number": "285"
+  },
+  {
+    "question": "Which <Link> prop would you use to force a full page reload when clicked?",
+    "possibleAnswers": [
+      "A. forceReload",
+      "B. reload",
+      "C. reloadDocument",
+      "D. refresh"
+    ],
+    "correctAnswer": "C",
+    "number": "286"
+  },
+  {
+    "question": "What is the purpose of the 'state' prop in the <Link> component?",
+    "possibleAnswers": [
+      "A. To store local component state after navigation",
+      "B. To pass additional data along with navigation",
+      "C. To indicate whether the link is active or not",
+      "D. To persist Redux store data between routes"
+    ],
+    "correctAnswer": "B",
+    "number": "287"
+  },
+  {
+    "question": "How does the <Link> component differ from a standard <a> tag?",
+    "possibleAnswers": [
+      "A. <Link> reloads the page, while <a> prevents reloads",
+      "B. <Link> uses client-side routing, avoiding full reloads",
+      "C. <Link> cannot use relative paths",
+      "D. <a> supports state while <Link> does not"
+    ],
+    "correctAnswer": "B",
+    "number": "288"
+  },
+  {
+    "question": "What does the 'relative' prop control in a <Link> component?",
+    "possibleAnswers": [
+      "A. Whether the link opens in a new tab",
+      "B. How relative paths are resolved based on the current route",
+      "C. The visual styling of the link element",
+      "D. Whether the link includes query parameters"
+    ],
+    "correctAnswer": "B",
+    "number": "289"
+  },
+  {
+    "question": "What is the primary purpose of the useNavigate hook in React Router?",
+    "possibleAnswers": [
+      "A. To access the current route parameters",
+      "B. To programmatically navigate between routes",
+      "C. To define new routes dynamically",
+      "D. To monitor navigation events"
+    ],
+    "correctAnswer": "B",
+    "number": "290"
+  },
+  {
+    "question": "What does the useNavigate hook return?",
+    "possibleAnswers": [
+      "A. The current route location object",
+      "B. A navigate function used for programmatic navigation",
+      "C. A history object with all visited routes",
+      "D. A route configuration map"
+    ],
+    "correctAnswer": "B",
+    "number": "291"
+  },
+  {
+    "question": "Which of the following correctly navigates to the '/dashboard' route using useNavigate?",
+    "possibleAnswers": [
+      "A. navigate.push('/dashboard')",
+      "B. navigate.go('/dashboard')",
+      "C. navigate('/dashboard')",
+      "D. navigateTo('/dashboard')"
+    ],
+    "correctAnswer": "C",
+    "number": "292"
+  },
+  {
+    "question": "How can you navigate back one page in history using useNavigate?",
+    "possibleAnswers": [
+      "A. navigate('back')",
+      "B. navigate(-1)",
+      "C. navigate('/previous')",
+      "D. navigate.back()"
+    ],
+    "correctAnswer": "B",
+    "number": "293"
+  },
+  {
+    "question": "What does setting the replace option to true in navigate('/path', { replace: true }) do?",
+    "possibleAnswers": [
+      "A. It forces a full page reload",
+      "B. It replaces the current entry in the history stack instead of adding a new one",
+      "C. It resets all route parameters",
+      "D. It blocks navigation until user confirmation"
+    ],
+    "correctAnswer": "B",
+    "number": "294"
+  },
+  {
+    "question": "Which option allows you to pass data along with navigation using useNavigate?",
+    "possibleAnswers": [
+      "A. { state: {...} }",
+      "B. { data: {...} }",
+      "C. { query: {...} }",
+      "D. { params: {...} }"
+    ],
+    "correctAnswer": "A",
+    "number": "295"
+  },
+  {
+    "question": "What happens when you call navigate(1)?",
+    "possibleAnswers": [
+      "A. It navigates to the root path",
+      "B. It reloads the current route",
+      "C. It moves forward one entry in the history stack",
+      "D. It navigates to the first defined route"
+    ],
+    "correctAnswer": "C",
+    "number": "296"
+  },
+  {
+    "question": "What does the useParams hook return in React Router?",
+    "possibleAnswers": [
+      "A. An array of all route parameters",
+      "B. An object containing key/value pairs of the current route parameters",
+      "C. A string with the current route path",
+      "D. A function for setting new parameters"
+    ],
+    "correctAnswer": "B",
+    "number": "297"
+  },
+  {
+    "question": "If the current route is '/users/:id' and the user visits '/users/10', what will useParams() return?",
+    "possibleAnswers": [
+      "A. { id: 10 }",
+      "B. { id: '10' }",
+      "C. ['10']",
+      "D. { userId: '10' }"
+    ],
+    "correctAnswer": "B",
+    "number": "298"
+  },
+  {
+    "question": "What does useParams() return if the current route has no parameters?",
+    "possibleAnswers": [
+      "A. null",
+      "B. undefined",
+      "C. {} (an empty object)",
+      "D. [] (an empty array)"
+    ],
+    "correctAnswer": "C",
+    "number": "299"
+  },
+  {
+    "question": "In which of the following cases will useParams() provide access to route parameters?",
+    "possibleAnswers": [
+      "A. When the component is rendered inside a <Route> with a dynamic path",
+      "B. When the component is rendered outside any Router context",
+      "C. When parameters are passed via query strings",
+      "D. When parameters are passed through props"
+    ],
+    "correctAnswer": "A",
+    "number": "300"
+  },
+  {
+    "question": "Given a route '/products/:category/:id', what will useParams() return when visiting '/products/electronics/55'?",
+    "possibleAnswers": [
+      "A. { category: 'electronics', id: '55' }",
+      "B. { products: 'electronics', id: '55' }",
+      "C. ['electronics', '55']",
+      "D. { category: electronics, id: 55 }"
+    ],
+    "correctAnswer": "A",
+    "number": "301"
+  },
+  {
+    "question": "Which of the following statements about useParams is true?",
+    "possibleAnswers": [
+      "A. useParams automatically converts parameter values to numbers if possible",
+      "B. useParams only works with components wrapped in a <Route>",
+      "C. useParams can access query string parameters directly",
+      "D. useParams triggers re-renders when unrelated state changes"
+    ],
+    "correctAnswer": "B",
+    "number": "302"
+  },
+  {
+    "question": "If you navigate from '/users/5' to '/users/6' using a Link, what happens to the value returned by useParams()?",
+    "possibleAnswers": [
+      "A. It stays the same until the page reloads",
+      "B. It automatically updates to { id: '6' }",
+      "C. It becomes undefined until the next render",
+      "D. It triggers a manual re-render to update"
+    ],
+    "correctAnswer": "B",
+    "number": "303"
+  },
+  {
+    "question": "What does the useSearchParams hook return?",
+    "possibleAnswers": [
+      "A. A single object containing all query parameters",
+      "B. An array with the current search params and a function to update them",
+      "C. A function that parses query strings",
+      "D. A boolean indicating if search parameters exist"
+    ],
+    "correctAnswer": "B",
+    "number": "304"
+  },
+  {
+    "question": "How do you read the value of a query parameter named 'user' using useSearchParams?",
+    "possibleAnswers": [
+      "A. searchParams.user",
+      "B. searchParams['user']",
+      "C. searchParams.get('user')",
+      "D. getSearchParam('user')"
+    ],
+    "correctAnswer": "C",
+    "number": "305"
+  },
+  {
+    "question": "Which statement about setSearchParams is true?",
+    "possibleAnswers": [
+      "A. It updates the query string in the URL without reloading the page",
+      "B. It triggers a full page reload",
+      "C. It can only set one parameter at a time",
+      "D. It must be called inside a useEffect hook"
+    ],
+    "correctAnswer": "A",
+    "number": "306"
+  },
+  {
+    "question": "What type of object is searchParams returned from useSearchParams?",
+    "possibleAnswers": [
+      "A. A plain JavaScript object",
+      "B. A URLSearchParams instance",
+      "C. A JSON object",
+      "D. A Map with numeric keys"
+    ],
+    "correctAnswer": "B",
+    "number": "307"
+  },
+  {
+    "question": "What happens when you call setSearchParams({ filter: 'new' })?",
+    "possibleAnswers": [
+      "A. The filter variable updates, but the URL stays the same",
+      "B. The URL's query string updates to '?filter=new' without reloading",
+      "C. React re-renders the entire app from scratch",
+      "D. It clears all other parameters automatically"
+    ],
+    "correctAnswer": "B",
+    "number": "308"
+  },
+  {
+    "question": "If you want to preserve existing query parameters while adding a new one, what should you do?",
+    "possibleAnswers": [
+      "A. Manually merge the parameters before calling setSearchParams",
+      "B. Call setSearchParams({ newParam: 'value' }) directly",
+      "C. Use searchParams.append('newParam', 'value') and then call setSearchParams(searchParams)",
+      "D. Use setSearchParams with append: true"
+    ],
+    "correctAnswer": "C",
+    "number": "309"
+  },
+  {
+    "question": "What does searchParams.getAll('tag') return if the URL is '?tag=react&tag=hooks'?",
+    "possibleAnswers": [
+      "A. ['react', 'hooks']",
+      "B. 'react, hooks'",
+      "C. 'react'",
+      "D. { tag: ['react', 'hooks'] }"
+    ],
+    "correctAnswer": "A",
+    "number": "310"
+  },
+  {
+    "question": "Which statement correctly describes how useSearchParams affects navigation history?",
+    "possibleAnswers": [
+      "A. It updates the query string and pushes a new entry to the browser history",
+      "B. It replaces the current page in history instead of pushing a new one",
+      "C. It clears the navigation history",
+      "D. It has no effect on browser history"
+    ],
+    "correctAnswer": "A",
+    "number": "311"
+  },
+  {
+    "question": "Which React Router code snippet correctly sets up declarative routing for a homepage (/) and an about page (/about)?",
+    "possibleAnswers": [
+      "A. <Routes>\n  <Route path=\"/\" element={<Home />} />\n  <Route path=\"/about\" element={<About />} />\n</Routes>",
+      "B. <Router>\n  <Route path=\"/\" component={Home} />\n  <Route path=\"/about\" component={About} />\n</Router>",
+      "C. <Routes>\n  <Route path=\"/\" render={() => <Home />} />\n  <Route path=\"/about\" render={() => <About />} />\n</Routes>",
+      "D. <Routes>\n  <Route path=\"/\">\n    <Home />\n  </Route>\n  <Route path=\"/about\">\n    <About />\n  </Route>\n</Routes>"
+    ],
+    "correctAnswer": "A",
+    "number": "312"
+  },
+  {
+    "question": "What's the key difference between the <Link> component and useNavigate in React Router?",
+    "possibleAnswers": [
+      "A. <Link> can only navigate to routes within your app while useNavigate can open external URLs",
+      "B. <Link> triggers a full page reload while useNavigate doesn't",
+      "C. <Link> only works with relative paths, while useNavigate works with absolute paths",
+      "D. <Link> is for declarative navigation in JSX, while useNavigate is for programmatic navigation"
+    ],
+    "correctAnswer": "D",
+    "number": "313"
+  },
+  {
+    "question": "When should you use useParams instead of useSearchParams in React Router?",
+    "possibleAnswers": [
+      "A. When you need to persist state in the URL after page refresh",
+      "B. When you want to store complex nested data structures in the URL",
+      "C. When you need to access dynamic segments from the route path (e.g. /users/:id)",
+      "D. When you want to trigger side effects on parameter changes"
+    ],
+    "correctAnswer": "C",
+    "number": "314"
+  }
+]

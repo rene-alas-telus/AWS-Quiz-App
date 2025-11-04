@@ -25,14 +25,23 @@ const Quiz = () => {
   // Fetch questions based on exam type and set dark mode
   useEffect(() => {
     const examType = location.state?.examType || 'practitioner'
-    const jsonFile = examType === 'practitioner' 
-      ? '/practitionerQuestions.json' 
-      : '/developerQuestions.json'
+    let jsonFile = '/practitionerQuestions.json'
+    
+    if (examType === 'developer') {
+      jsonFile = '/developerQuestions.json'
+    } else if (examType === 'reactJunior') {
+      jsonFile = '/reactJuniorQuestions.json'
+      setTimer(40 * 60) // 40 minutes for React Junior
+    }
     
     // Set the exam title
-    setExamTitle(examType === 'practitioner' 
-      ? 'Cloud Practitioner Practice Test' 
-      : 'Developer Associate Practice Test')
+    if (examType === 'practitioner') {
+      setExamTitle('Cloud Practitioner Practice Test')
+    } else if (examType === 'developer') {
+      setExamTitle('Developer Associate Practice Test')
+    } else if (examType === 'reactJunior') {
+      setExamTitle('React Junior Practice Test')
+    }
     
     // No need to set dark mode from location state anymore
     // The ThemeContext handles this now
@@ -40,8 +49,16 @@ const Quiz = () => {
     fetch(jsonFile)
       .then((response) => response.json())
       .then((data) => {
-        // Reduced number of questions for testing (65 )
-        const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
+        let shuffled
+        
+        // For React Junior, limit to 50 questions
+        if (examType === 'reactJunior') {
+          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 50)
+        } else {
+          // For other exams, use 65 questions
+          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
+        }
+        
         setQuestions(shuffled)
       })
   }, [location.state])
@@ -68,8 +85,9 @@ const Quiz = () => {
 
   const handleAnswerChange = (e) => {
     const { name, checked } = e.target
+    const correctAnswer = questions[currentQuestionIndex].correctAnswer
     const isMultipleChoice =
-      questions[currentQuestionIndex].correctAnswer.includes(',')
+      correctAnswer.includes(',') || correctAnswer.length > 1
 
     setSelectedAnswers((prev) => {
       const updatedAnswers = {
@@ -85,9 +103,16 @@ const Quiz = () => {
       }
 
       const currentQuestion = questions[currentQuestionIndex]
-      const totalAnswersRequired = isMultipleChoice
-        ? currentQuestion.correctAnswer.split(',').length
-        : 1
+      const correctAnswer = currentQuestion.correctAnswer
+      let totalAnswersRequired = 1
+      
+      if (isMultipleChoice) {
+        if (correctAnswer.includes(',')) {
+          totalAnswersRequired = correctAnswer.split(',').length
+        } else {
+          totalAnswersRequired = correctAnswer.length
+        }
+      }
 
       const selectedAnswerCount = Object.keys(
         updatedAnswers[currentQuestionIndex] || {}
@@ -105,9 +130,18 @@ const Quiz = () => {
     questions.forEach((question, index) => {
       if (!autoGradedAnswers[index]) {
         autoGradedAnswers[index] = {}
-        question.correctAnswer.split(',').forEach((answer) => {
-          autoGradedAnswers[index][answer] = false // Mark as incorrect
-        })
+        const correctAnswer = question.correctAnswer
+        
+        if (correctAnswer.includes(',')) {
+          correctAnswer.split(',').forEach((answer) => {
+            autoGradedAnswers[index][answer] = false // Mark as incorrect
+          })
+        } else {
+          // For answers like "ABD" without commas
+          for (let i = 0; i < correctAnswer.length; i++) {
+            autoGradedAnswers[index][correctAnswer[i]] = false // Mark as incorrect
+          }
+        }
       }
     })
 
@@ -159,7 +193,16 @@ const Quiz = () => {
   useEffect(() => {
     if (showAnswerFeedback && selectedAnswers[currentQuestionIndex]) {
       const currentQuestion = questions[currentQuestionIndex]
-      const correctAnswers = new Set(currentQuestion.correctAnswer.split(','))
+      const correctAnswer = currentQuestion.correctAnswer
+      let correctAnswers
+      
+      if (correctAnswer.includes(',')) {
+        correctAnswers = new Set(correctAnswer.split(','))
+      } else {
+        // For answers like "ABD" without commas
+        correctAnswers = new Set([...correctAnswer])
+      }
+      
       const selected = new Set(
         Object.keys(selectedAnswers[currentQuestionIndex] || {})
       )
@@ -190,15 +233,70 @@ const Quiz = () => {
     allAnswersSelected
   ])
 
+  // Function to format code blocks in question text
+  const formatQuestionText = (text) => {
+    if (!text) return '';
+    
+    // Start with the original text
+    let formattedText = text;
+    
+    // Format function blocks with proper line breaks
+    const functionBlockRegex = /function\s+\w*\s*\([^)]*\)\s*\{[^}]*\}/g;
+    const functionMatches = formattedText.match(functionBlockRegex);
+    if (functionMatches) {
+      for (const match of functionMatches) {
+        const formattedCode = match.replace(/\\n/g, '\n');
+        formattedText = formattedText.replace(match, `<pre><code>${formattedCode}</code></pre>`);
+      }
+    }
+    
+    // Format if blocks with proper line breaks
+    const ifBlockRegex = /if\s*\([^)]*\)\s*\{[^}]*\}/g;
+    const ifMatches = formattedText.match(ifBlockRegex);
+    if (ifMatches) {
+      for (const match of ifMatches) {
+        const formattedCode = match.replace(/\\n/g, '\n');
+        formattedText = formattedText.replace(match, `<pre><code>${formattedCode}</code></pre>`);
+      }
+    }
+    
+    // Format console.log statements
+    const consoleLogRegex = /console\.log\([^)]*\);/g;
+    formattedText = formattedText.replace(consoleLogRegex, match => {
+      return `<code>${match}</code>`;
+    });
+    
+    // Format variable declarations
+    const declarationRegex = /(const|let|var)\s+\w+\s*=\s*[^;]*;/g;
+    formattedText = formattedText.replace(declarationRegex, match => {
+      return `<code>${match}</code>`;
+    });
+    
+    // Replace all remaining \n with <br> for line breaks
+    formattedText = formattedText.replace(/\\n/g, '<br>');
+    
+    return formattedText;
+  };
+
   if (questions.length === 0) {
     return <div>Loading...</div>
   }
 
   const currentQuestion = questions[currentQuestionIndex]
-  const isMultipleChoice = currentQuestion.correctAnswer.includes(',')
-  const totalAnswersRequired = isMultipleChoice
-    ? currentQuestion.correctAnswer.split(',').length
-    : null
+  const correctAnswer = currentQuestion.correctAnswer
+  const isMultipleChoice = correctAnswer.includes(',') || correctAnswer.length > 1
+  
+  let totalAnswersRequired = null
+  if (isMultipleChoice) {
+    if (correctAnswer.includes(',')) {
+      totalAnswersRequired = correctAnswer.split(',').length
+    } else {
+      totalAnswersRequired = correctAnswer.length
+    }
+  }
+  
+  // Format the question text to properly display code blocks
+  const formattedQuestionText = formatQuestionText(currentQuestion.question);
 
   return (
     <div className="quiz-container">
@@ -264,12 +362,14 @@ const Quiz = () => {
 
       <div className="question-container">
         <h2>Question {currentQuestionIndex + 1}</h2>
-        <p className="question-text">
-          {currentQuestion.question}
-          {isMultipleChoice &&
-            totalAnswersRequired &&
-            ` (Select ${totalAnswersRequired} answers)`}
-        </p>
+        <p 
+          className="question-text"
+          dangerouslySetInnerHTML={{ 
+            __html: formattedQuestionText + 
+              (isMultipleChoice && totalAnswersRequired ? 
+                ` (Select ${totalAnswersRequired} answers)` : '')
+          }}
+        />
         <div className="options-container">
           {currentQuestion.possibleAnswers.map((answer) => (
             <div

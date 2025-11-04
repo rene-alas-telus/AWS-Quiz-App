@@ -64,7 +64,7 @@ const ExamSelection = () => {
         </label>
       </div>
       
-      <p>Select which AWS certification exam you want to practice for:</p>
+      <p>Select which certification exam you want to practice for:</p>
       
       <div className="options-container">
         <div 
@@ -93,6 +93,20 @@ const ExamSelection = () => {
             onChange={() => handleExamSelection('developer')} 
           />
           <label htmlFor="developer-exam">Developer Associate DVA-C02</label>
+        </div>
+        
+        <div 
+          className={`option ${selectedExam === 'reactJunior' ? 'selected' : ''}`}
+          onClick={() => handleExamSelection('reactJunior')}
+        >
+          <input 
+            type="radio" 
+            id="reactJunior-exam"
+            name="examType" 
+            checked={selectedExam === 'reactJunior'} 
+            onChange={() => handleExamSelection('reactJunior')} 
+          />
+          <label htmlFor="reactJunior-exam">React Junior</label>
         </div>
       </div>
       
