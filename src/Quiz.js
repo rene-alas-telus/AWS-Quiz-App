@@ -53,7 +53,7 @@ const Quiz = () => {
         
         // For React Junior, limit to 50 questions
         if (examType === 'reactJunior') {
-          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 10)
+          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 50)
         } else {
           // For other exams, use 65 questions
           shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
