@@ -446,7 +446,7 @@
     "number": "41"
   },
   {
-    "question": "42. Which syntax correctly skips an element in array destructuring?",
+    "question": "Which syntax correctly skips an element in array destructuring?",
     "possibleAnswers": [
       "A. const [a, b] = arr;",
       "B. const [a, , b] = arr;",

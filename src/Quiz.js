@@ -53,7 +53,7 @@ const Quiz = () => {
         
         // For React Junior, limit to 50 questions
         if (examType === 'reactJunior') {
-          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 50)
+          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 10)
         } else {
           // For other exams, use 65 questions
           shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
@@ -237,43 +237,75 @@ const Quiz = () => {
   const formatQuestionText = (text) => {
     if (!text) return '';
     
-    // Start with the original text
-    let formattedText = text;
+    // First, escape HTML tags to prevent them from being interpreted as actual HTML
+    // This will handle cases like <input> tags in the question text
+    let formattedText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    
+    // Store code blocks to restore them later
+    const codeBlocks = [];
     
     // Format function blocks with proper line breaks
     const functionBlockRegex = /function\s+\w*\s*\([^)]*\)\s*\{[^}]*\}/g;
-    const functionMatches = formattedText.match(functionBlockRegex);
+    const functionMatches = text.match(functionBlockRegex);
     if (functionMatches) {
-      for (const match of functionMatches) {
+      for (let i = 0; i < functionMatches.length; i++) {
+        const match = functionMatches[i];
         const formattedCode = match.replace(/\\n/g, '\n');
-        formattedText = formattedText.replace(match, `<pre><code>${formattedCode}</code></pre>`);
+        const placeholder = `__CODE_BLOCK_${i}__`;
+        codeBlocks.push(`<pre><code>${formattedCode}</code></pre>`);
+        formattedText = formattedText.replace(match.replace(/</g, '&lt;').replace(/>/g, '&gt;'), placeholder);
       }
     }
     
     // Format if blocks with proper line breaks
     const ifBlockRegex = /if\s*\([^)]*\)\s*\{[^}]*\}/g;
-    const ifMatches = formattedText.match(ifBlockRegex);
+    const ifMatches = text.match(ifBlockRegex);
     if (ifMatches) {
-      for (const match of ifMatches) {
+      for (let i = 0; i < ifMatches.length; i++) {
+        const match = ifMatches[i];
         const formattedCode = match.replace(/\\n/g, '\n');
-        formattedText = formattedText.replace(match, `<pre><code>${formattedCode}</code></pre>`);
+        const placeholder = `__CODE_BLOCK_${i + (functionMatches ? functionMatches.length : 0)}__`;
+        codeBlocks.push(`<pre><code>${formattedCode}</code></pre>`);
+        formattedText = formattedText.replace(match.replace(/</g, '&lt;').replace(/>/g, '&gt;'), placeholder);
       }
     }
     
     // Format console.log statements
     const consoleLogRegex = /console\.log\([^)]*\);/g;
-    formattedText = formattedText.replace(consoleLogRegex, match => {
-      return `<code>${match}</code>`;
-    });
+    const consoleLogMatches = text.match(consoleLogRegex);
+    if (consoleLogMatches) {
+      for (let i = 0; i < consoleLogMatches.length; i++) {
+        const match = consoleLogMatches[i];
+        const placeholder = `__CODE_BLOCK_${i + 
+          (functionMatches ? functionMatches.length : 0) + 
+          (ifMatches ? ifMatches.length : 0)}__`;
+        codeBlocks.push(`<code>${match}</code>`);
+        formattedText = formattedText.replace(match.replace(/</g, '&lt;').replace(/>/g, '&gt;'), placeholder);
+      }
+    }
     
     // Format variable declarations
     const declarationRegex = /(const|let|var)\s+\w+\s*=\s*[^;]*;/g;
-    formattedText = formattedText.replace(declarationRegex, match => {
-      return `<code>${match}</code>`;
-    });
+    const declarationMatches = text.match(declarationRegex);
+    if (declarationMatches) {
+      for (let i = 0; i < declarationMatches.length; i++) {
+        const match = declarationMatches[i];
+        const placeholder = `__CODE_BLOCK_${i + 
+          (functionMatches ? functionMatches.length : 0) + 
+          (ifMatches ? ifMatches.length : 0) + 
+          (consoleLogMatches ? consoleLogMatches.length : 0)}__`;
+        codeBlocks.push(`<code>${match}</code>`);
+        formattedText = formattedText.replace(match.replace(/</g, '&lt;').replace(/>/g, '&gt;'), placeholder);
+      }
+    }
     
     // Replace all remaining \n with <br> for line breaks
     formattedText = formattedText.replace(/\\n/g, '<br>');
+    
+    // Restore code blocks
+    for (let i = 0; i < codeBlocks.length; i++) {
+      formattedText = formattedText.replace(`__CODE_BLOCK_${i}__`, codeBlocks[i]);
+    }
     
     return formattedText;
   };

@@ -32,16 +32,25 @@ const Result = () => {
       const userAnswers = Object.keys(selectedAnswers[index] || {}).filter(
         (key) => selectedAnswers[index][key]
       )
-      const correctAnswers = question.correctAnswer
-        .split(',')
-        .map((answer) => answer.trim())
+      
+      // Handle both comma-separated and concatenated answer formats
+      let correctAnswers;
+      if (question.correctAnswer.includes(',')) {
+        correctAnswers = question.correctAnswer
+          .split(',')
+          .map((answer) => answer.trim())
+      } else {
+        // For answers like "AB" without commas
+        correctAnswers = [...question.correctAnswer]
+      }
 
-      // Check if userAnswers match correctAnswers
-      if (
-        userAnswers.length === correctAnswers.length &&
-        userAnswers.every((answer) => correctAnswers.includes(answer)) &&
-        correctAnswers.every((answer) => userAnswers.includes(answer))
-      ) {
+      // Check if all user answers are correct and no incorrect answers are selected
+      const allUserAnswersAreCorrect = userAnswers.every((answer) => 
+        correctAnswers.includes(answer)
+      )
+      
+      // If all selected answers are correct, mark as correct
+      if (allUserAnswersAreCorrect) {
         correctCount++
       }
     })
@@ -113,16 +122,24 @@ const Result = () => {
         const userAnswers = Object.keys(selectedAnswers[index] || {}).filter(
           (key) => selectedAnswers[index][key]
         )
-        const correctAnswers = question.correctAnswer
-          .split(',')
-          .map((answer) => answer.trim())
+        
+        // Handle both comma-separated and concatenated answer formats
+        let correctAnswers;
+        if (question.correctAnswer.includes(',')) {
+          correctAnswers = question.correctAnswer
+            .split(',')
+            .map((answer) => answer.trim())
+        } else {
+          // For answers like "AB" without commas
+          correctAnswers = [...question.correctAnswer]
+        }
 
-        // If user got the question wrong
-        if (
-          userAnswers.length !== correctAnswers.length ||
-          !userAnswers.every((answer) => correctAnswers.includes(answer)) ||
-          !correctAnswers.every((answer) => userAnswers.includes(answer))
-        ) {
+        // If user selected any incorrect answer
+        const anyIncorrectAnswerSelected = userAnswers.some(answer => 
+          !correctAnswers.includes(answer)
+        )
+        
+        if (anyIncorrectAnswerSelected) {
           return (
             <div key={index} className="wrong-answer-section">
               <h4>{question.question}</h4>
