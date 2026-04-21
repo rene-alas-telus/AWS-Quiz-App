@@ -108,6 +108,20 @@ const ExamSelection = () => {
           />
           <label htmlFor="reactJunior-exam">React Junior</label>
         </div>
+
+        <div 
+          className={`option ${selectedExam === 'generativeAILeader' ? 'selected' : ''}`}
+          onClick={() => handleExamSelection('generativeAILeader')}
+        >
+          <input 
+            type="radio" 
+            id="generativeAILeader-exam"
+            name="examType" 
+            checked={selectedExam === 'generativeAILeader'} 
+            onChange={() => handleExamSelection('generativeAILeader')} 
+          />
+          <label htmlFor="generativeAILeader-exam">Google Generative AI Leader</label>
+        </div>
       </div>
       
       <div className="navigation-buttons">

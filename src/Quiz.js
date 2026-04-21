@@ -32,6 +32,9 @@ const Quiz = () => {
     } else if (examType === 'reactJunior') {
       jsonFile = '/reactJuniorQuestions.json'
       setTimer(40 * 60) // 40 minutes for React Junior
+    } else if (examType === 'generativeAILeader') {
+      jsonFile = '/generativeAILeaderQuestions.json'
+      setTimer(90 * 60) // 90 minutes for Generative AI Leader
     }
     
     // Set the exam title
@@ -41,6 +44,8 @@ const Quiz = () => {
       setExamTitle('Developer Associate Practice Test')
     } else if (examType === 'reactJunior') {
       setExamTitle('React Junior Practice Test')
+    } else if (examType === 'generativeAILeader') {
+      setExamTitle('Google Generative AI Leader Practice Test')
     }
     
     // No need to set dark mode from location state anymore
