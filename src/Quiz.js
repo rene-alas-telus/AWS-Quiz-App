@@ -59,7 +59,12 @@ const Quiz = () => {
         // For React Junior, limit to 50 questions
         if (examType === 'reactJunior') {
           shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 50)
-        } else {
+        } 
+        else if (examType === 'generativeAILeader') {
+          // For Generative AI Leader, use all questions (assuming there are 60)
+          shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 60)
+        }
+        else {
           // For other exams, use 65 questions
           shuffled = data.sort(() => 0.5 - Math.random()).slice(0, 65)
         }
@@ -319,6 +324,48 @@ const Quiz = () => {
     return <div>Loading...</div>
   }
 
+  // Count fully-answered questions and how many were answered correctly,
+  // so the live feedback counter can reflect real-time pass/fail status.
+  const getProgressCounts = () => {
+    let correct = 0
+    let answered = 0
+    Object.keys(selectedAnswers).forEach((idx) => {
+      const question = questions[idx]
+      if (!question) return
+
+      const selectedKeys = Object.entries(selectedAnswers[idx] || {})
+        .filter(([, v]) => v)
+        .map(([k]) => k)
+      if (selectedKeys.length === 0) return
+
+      const qCorrect = question.correctAnswer
+      const correctSet = qCorrect.includes(',')
+        ? new Set(qCorrect.split(','))
+        : new Set([...qCorrect])
+
+      // Skip multi-select questions that don't yet have all required picks
+      const isMC = qCorrect.includes(',') || qCorrect.length > 1
+      if (isMC && selectedKeys.length < correctSet.size) return
+
+      answered += 1
+      const selectedSet = new Set(selectedKeys)
+      const isAllCorrect =
+        selectedSet.size === correctSet.size &&
+        [...correctSet].every((a) => selectedSet.has(a))
+      if (isAllCorrect) correct += 1
+    })
+    return { correct, answered }
+  }
+
+  const { correct: correctCount, answered: answeredCount } = getProgressCounts()
+  const progressPct = answeredCount === 0 ? 0 : (correctCount / answeredCount) * 100
+  let progressColorClass = 'neutral'
+  if (answeredCount > 0) {
+    if (progressPct >= 70) progressColorClass = 'green'
+    else if (progressPct >= 60) progressColorClass = 'yellow'
+    else progressColorClass = 'red'
+  }
+
   const currentQuestion = questions[currentQuestionIndex]
   const correctAnswer = currentQuestion.correctAnswer
   const isMultipleChoice = correctAnswer.includes(',') || correctAnswer.length > 1
@@ -339,17 +386,29 @@ const Quiz = () => {
     <div className="quiz-container">
       {/* Exam Title */}
       <h1 className="exam-title">{examTitle}</h1>
-      
-      {/* Timer Display */}
-      <div className="timer">
-        <p>
-          <FaClock
-            color={isDarkMode ? 'white' : 'black'}
-            style={{ marginRight: '5px' }}
-          />
-          <label className="timerLabel">Time Remaining:</label>{' '}
-          {formatTime(timer)}
-        </p>
+
+      {/* Timer + live progress counter */}
+      <div className="timer-row">
+        <div className="timer">
+          <p>
+            <span className="timer-text">
+              <FaClock
+                color={isDarkMode ? 'white' : 'black'}
+                className="timer-clock-icon"
+              />
+              <label className="timerLabel">Time Remaining:</label>
+            </span>
+            <span className="timer-value">{formatTime(timer)}</span>
+          </p>
+        </div>
+        {showAnswerFeedback && (
+          <div className="feedback-counter-wrapper">
+            <div className="feedback-counter-label">Correct Answer Counter</div>
+            <div className={`feedback-counter ${progressColorClass}`}>
+              {correctCount} of {questions.length}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="toggle-container">

@@ -17,10 +17,12 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
+      document.documentElement.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
+      document.documentElement.classList.remove('dark-mode');
     }
-    
+
     // Save theme preference to localStorage
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
