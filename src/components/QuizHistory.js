@@ -2,7 +2,11 @@ import React from 'react';
 import './QuizHistory.css';
 
 const QuizHistory = ({ attempts }) => {
-  if (!attempts || attempts.length === 0) {
+  const visibleAttempts = (attempts || []).filter(
+    (a) => a.examType !== 'Test Attempt'
+  );
+
+  if (visibleAttempts.length === 0) {
     return (
       <div className="quiz-history-container">
         <h3>Quiz History</h3>
@@ -37,7 +41,7 @@ const QuizHistory = ({ attempts }) => {
             </tr>
           </thead>
           <tbody>
-            {attempts.map((attempt) => (
+            {visibleAttempts.map((attempt) => (
               <tr key={attempt.id}>
                 <td>{formatDate(attempt.date)}</td>
                 <td>{attempt.examType}</td>
