@@ -1,15 +1,16 @@
-import { 
-  collection, 
-  addDoc, 
-  query, 
-  where, 
-  orderBy, 
-  limit, 
-  getDocs, 
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  orderBy,
+  limit,
+  getDocs,
   serverTimestamp,
   doc,
   getDoc,
-  setDoc
+  setDoc,
+  deleteDoc
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
@@ -24,10 +25,11 @@ export const saveQuizAttempt = async (userId, quizData) => {
       return null;
     }
     
-    // Generate a unique ID for this attempt based on timestamp and exam type
-    // This will help prevent duplicate saves
-    const now = new Date();
-    const uniqueId = `${userId}_${quizData.examTitle}_${now.getTime()}`;
+    // Prefer caller-supplied attemptId/timestamp so the Firestore doc ID is
+    // stable across Result-page remounts; setDoc then overwrites the same doc
+    // instead of inserting a duplicate row.
+    const now = quizData.attemptTimestamp ? new Date(quizData.attemptTimestamp) : new Date();
+    const uniqueId = quizData.attemptId || `${userId}_${quizData.examTitle}_${now.getTime()}`;
     
     const attemptData = {
       userId,
@@ -113,6 +115,19 @@ export const getLatestQuizAttempts = async (userId, limitCount = 10) => {
     console.error('Error details:', error.code, error.message);
     // Return empty array instead of throwing to prevent app crashes
     return [];
+  }
+};
+
+// Delete a single quiz attempt by document ID (used by the /cleanup route).
+export const deleteQuizAttempt = async (userId, attemptDocId) => {
+  if (!userId || !attemptDocId) return { error: 'Missing userId or attemptDocId' };
+  try {
+    const attemptRef = doc(db, 'users', userId, 'quizAttempts', attemptDocId);
+    await deleteDoc(attemptRef);
+    return { id: attemptDocId, deleted: true };
+  } catch (error) {
+    console.error('Error deleting quiz attempt:', error);
+    return { error: error.message };
   }
 };
 

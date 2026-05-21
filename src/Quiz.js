@@ -155,20 +155,27 @@ const Quiz = () => {
       }
     })
 
-    // Log the data being passed to the result page
+    // Lock attempt identity at submit time so Result-page remounts (refresh,
+    // restored tab) don't create duplicate history rows.
+    const attemptId = `${currentUser?.uid || 'anon'}_${Date.now()}`
+    const attemptTimestamp = new Date().toISOString()
+
     console.log('Submitting quiz with data:', {
-      questions, 
-      selectedAnswers: autoGradedAnswers, 
+      questions,
+      selectedAnswers: autoGradedAnswers,
       userName: currentUser?.displayName || userName,
-      examTitle
+      examTitle,
+      attemptId
     })
 
     navigate('/result', {
-      state: { 
-        questions, 
-        selectedAnswers: autoGradedAnswers, 
+      state: {
+        questions,
+        selectedAnswers: autoGradedAnswers,
         userName: currentUser?.displayName || userName,
-        examTitle
+        examTitle,
+        attemptId,
+        attemptTimestamp
       }
     })
   }

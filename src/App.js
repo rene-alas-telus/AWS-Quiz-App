@@ -6,6 +6,7 @@ import ExamSelection from './ExamSelection'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
+import CleanupAttempts from './components/CleanupAttempts'
 import { AuthProvider } from './contexts/AuthContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import './App.css'
@@ -32,6 +33,11 @@ const App = () => {
               <Route path="/result" element={
                 <PrivateRoute>
                   <Result />
+                </PrivateRoute>
+              } />
+              <Route path="/cleanup" element={
+                <PrivateRoute>
+                  <CleanupAttempts />
                 </PrivateRoute>
               } />
             </Routes>
